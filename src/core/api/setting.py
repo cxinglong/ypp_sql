@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from core.models import globalpermissions, Account
 from django.http import HttpResponse
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('yupaopao.core.views')
 
 
 class setting_view(baseview.SuperUserpermissions):
@@ -43,7 +43,7 @@ class setting_view(baseview.SuperUserpermissions):
                     return Response('ldap连接失败!')
             elif args == '2':
                 ding = request.data['ding']
-                util.dingding('yearning webhook测试', ding)
+                util.dingding('yupaopao webhook测试', ding)
                 return Response('已发送测试消息，请在钉钉中查看')
 
             else:
@@ -57,10 +57,10 @@ class setting_view(baseview.SuperUserpermissions):
                     name, addr = parseaddr(s)
                     return formataddr((Header(name, 'utf-8').encode(), addr))
 
-                msg = MIMEText('Yearning test Message!', 'plain', 'utf-8')
-                msg['From'] = _format_addr('Yearning_Admin <%s>' % mail['user'])
-                msg['Subject'] = Header('Yearning 消息推送测试', 'utf-8').encode()
-                server = smtplib.SMTP(mail['smtp_host'], mail['smtp_port'])  # SMTP协议默认端口是25
+                msg = MIMEText('yupaopao SQL审核 test Message!', 'plain', 'utf-8')
+                msg['From'] = _format_addr('yupaopao_Admin <%s>' % mail['user'])
+                msg['Subject'] = Header('yupaopao SQL 消息推送测试', 'utf-8').encode()
+                server = smtplib.SMTP_SSL(mail['smtp_host'], mail['smtp_port'])  # SMTP协议默认端口是25
                 server.set_debuglevel(1)
                 server.login(mail['user'], mail['password'])
                 server.sendmail(mail['user'], [mail['to_user']], msg.as_string())
