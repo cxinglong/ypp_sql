@@ -58,8 +58,8 @@ class setting_view(baseview.SuperUserpermissions):
                     return formataddr((Header(name, 'utf-8').encode(), addr))
 
                 msg = MIMEText('yupaopao SQL审核 test Message!', 'plain', 'utf-8')
-                msg['From'] = _format_addr('yupaopao_Admin <%s>' % mail['user'])
-                msg['Subject'] = Header('yupaopao SQL 消息推送测试', 'utf-8').encode()
+                msg['From'] = _format_addr('SQL审核 <%s>' % mail['user'])
+                msg['Subject'] = Header('yupaopao SQL 审核消息推送测试', 'utf-8').encode()
                 server = smtplib.SMTP_SSL(mail['smtp_host'], mail['smtp_port'])  # SMTP协议默认端口是25
                 server.set_debuglevel(1)
                 server.login(mail['user'], mail['password'])

@@ -121,8 +121,8 @@ class send_email(object):
                        mail_data['text'],
                        mail_data['note'])
         msg = MIMEText(text, 'html', 'utf-8')
-        msg['From'] = self._format_addr('yupaopao_Admin <%s>' % self.email['user'])
-        msg['Subject'] = Header('yupaopao 工单消息推送', 'utf-8').encode()
+        msg['From'] = self._format_addr('SQL审核 <%s>' % self.email['user'])
+        msg['Subject'] = Header('yupaopao SQL 工单消息', 'utf-8').encode()
         server = smtplib.SMTP_SSL(self.email['smtp_host'], int(self.email['smtp_port']))
         server.set_debuglevel(1)
         server.login(self.email['user'], self.email['password'])
