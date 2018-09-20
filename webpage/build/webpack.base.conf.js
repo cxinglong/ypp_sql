@@ -42,8 +42,12 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'),resolve('node_modules/iview')]
+	use: [{
+          loader: 'babel-loader',
+          options: {
+             presets: ['es2015']
+          }
+        }]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

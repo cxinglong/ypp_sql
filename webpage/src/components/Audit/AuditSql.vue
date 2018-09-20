@@ -107,26 +107,26 @@
             <p v-for="i in sql">{{ i }}</p>
           </div>
         </FormItem>
-        <FormItem label="选择执行人:" v-if="multi && auth === 'admin'">
+        <FormItem label="终审与执行:" v-if="multi && auth === 'admin'">
           <Select v-model="multi_name" style="width: 20%">
             <Option v-for="i in multi_list" :value="i.username" :key="i.username">{{i.username}}</Option>
           </Select>
         </FormItem>
       </Form>
-      <template v-if="auth === 'admin'">
+      <template>
         <p class="pa">SQL检查结果:</p>
         <Table :columns="columnsName" :data="dataId" stripe border width="860" height="200"></Table>
       </template>
 
       <div slot="footer">
-        <Button type="warning" @click.native="test_button()" v-if="auth === 'admin'">检测sql</Button>
+        <Button type="warning" @click.native="test_button()">检测sql</Button>
         <Button @click="modal2 = false">取消</Button>
         <template v-if="switch_show">
           <template v-if="multi">
             <Button type="error" @click="out_button()" :disabled="summit" v-if="auth === 'admin'">驳回</Button>
             <Button type="error" @click="out_button()" v-else>驳回</Button>
             <Button type="success" @click="agreed_button()" :disabled="summit" v-if="auth === 'admin'">同意</Button>
-            <Button type="success" @click="put_button()" v-else-if="auth === 'perform'">执行</Button>
+            <Button type="success" @click="showAlert()" :disabled="summit" v-else-if="auth === 'perform'">执行</Button>
           </template>
           <template v-else>
             <Button type="error" @click="out_button()" :disabled="summit">驳回</Button>
@@ -182,6 +182,26 @@
       </Form>
     </Modal>
 
+    <Modal v-model="confirm" @on-ok="put_button" >
+      <p slot="header" style="color:#f60;font-size: 16px">
+        <Icon type="information-circled"></Icon>
+        <span>您确定执行此操作吗？</span>
+      </p>
+      <Form label-position="right">
+        <FormItem label="工单说明:">
+          <span>{{ formitem.text }}</span>
+        </FormItem>
+        <FormItem label="数据库:">
+          <span>{{ formitem.basename }}</span>
+        </FormItem>
+        <FormItem label="SQL语句:">
+          <br>
+          <div class="tree">
+            <p v-for="i in sql">{{ i }}</p>
+          </div>
+        </FormItem>
+      </Form>
+    </Modal>
 
   </div>
 </template>
@@ -477,8 +497,12 @@
             })
         }
       },
-      put_button () {
+      showAlert () {
         this.modal2 = false
+        this.confirm = true
+      },
+      put_button () {
+        this.confirm = false
         this.tmp[this.togoing].status = 3
         axios.put(`${util.url}/audit_sql`, {
           'type': 1,
