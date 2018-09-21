@@ -151,7 +151,7 @@
       :closable="false"
       :mask-closable="false"
       @on-cancel="callback_method"
-      @on-ok="stop_osc"
+      @on-ok="show_confirm"
       ok-text="终止osc"
       cancel-text="关闭窗口">
       <Form>
@@ -191,6 +191,24 @@
         <FormItem label="工单说明:">
           <span>{{ formitem.text }}</span>
         </FormItem>
+        <FormItem label="数据库:">
+          <span>{{ formitem.basename }}</span>
+        </FormItem>
+        <FormItem label="SQL语句:">
+          <br>
+          <div class="tree">
+            <p v-for="i in sql">{{ i }}</p>
+          </div>
+        </FormItem>
+      </Form>
+    </Modal>
+
+    <Modal v-model="osc_confirm" @on-ok="stop_osc" >
+      <p slot="header" style="color:#f60;font-size: 16px">
+        <Icon type="information-circled"></Icon>
+        <span>您确定终止操作吗？</span>
+      </p>
+      <Form label-position="right">
         <FormItem label="数据库:">
           <span>{{ formitem.basename }}</span>
         </FormItem>
@@ -480,7 +498,7 @@
       },
       agreed_button () {
         if (this.multi_name === '') {
-          this.$Message.error('请选择执行人!')
+          this.$Message.error('终审与执行人!')
         } else {
           axios.put(`${util.url}/audit_sql`, {
             'type': 2,
@@ -612,6 +630,9 @@
       },
       callback_method () {
         clearInterval(this.callback_time)
+      },
+      show_confirm () {
+        this.osc_confirm = true
       },
       stop_osc () {
         axios.delete(`${util.url}/osc/${this.oscsha1}`)
