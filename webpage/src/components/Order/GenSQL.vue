@@ -138,7 +138,7 @@
             <FormItem label="工单提交说明:" required>
               <Input v-model="formItem.text" placeholder="最多不超过20个字"></Input>
             </FormItem>
-            <FormItem label="指定审核人:" required>
+            <FormItem label="审批人:" required>
               <Select v-model="formItem.assigned" filterable transfer>
                 <Option v-for="i in assigned" :value="i" :key="i">{{i}}</Option>
               </Select>

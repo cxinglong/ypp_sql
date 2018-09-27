@@ -40,12 +40,12 @@
                   <Input v-model="formItem.text" placeholder="请输入"></Input>
                 </FormItem>
 
-                <FormItem label="指定审核人:" prop="assigned">
+                <FormItem label="审批人:" prop="assigned">
                   <Select v-model="formItem.assigned" filterable>
                     <Option v-for="i in this.assigned" :value="i" :key="i">{{i}}</Option>
                   </Select>
                 </FormItem>
-
+                
                 <FormItem label="是否备份">
                   <RadioGroup v-model="formItem.backup">
                     <Radio label="1">是</Radio>
@@ -61,7 +61,7 @@
                     :min="0">
                   </InputNumber>
                 </FormItem>
-
+                
               </Form>
               <Form :label-width="30">
                 <FormItem>

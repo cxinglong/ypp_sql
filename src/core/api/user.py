@@ -258,7 +258,7 @@ class ldapauth(baseview.AnyLogin):
                     token = jwt_encode_handler(jwt_payload_handler(_user))
                     return Response({'token': token, 'res': '', 'permissions': 'guest'})
             else:
-                return Response({'token': 'null', 'res': 'ldap账号认证失败,请检查ldap账号或ldap配置!'})
+                return Response({'token': 'null', 'res': '用户或密码错误!'})
 
 
 class login_auth(baseview.AnyLogin):

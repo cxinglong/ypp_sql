@@ -89,7 +89,7 @@
           </template>
           <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
           <br>
-          <FormItem label="选择上级审核人:">
+          <FormItem label="选择审批人:">
             <div style="border-bottom: 1px solid #e9e9e9;padding-bottom:6px;margin-bottom:6px;">
               <Checkbox
                 :indeterminate="indeterminate.person"
