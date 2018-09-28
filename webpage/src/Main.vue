@@ -94,26 +94,7 @@
       ok-text="同意"
       @on-ok="statementput"
     >
-      <h3>关于yupaopao:</h3>
-      <br>
-      <p>yupaopao 是一款基于inception的开源SQL审核平台。设计的目的便是让DBA能够从手动审核的环境中释放出来.让sql审核更加流程化,标准化,自动化。非常欢迎大家体验并使用yupaopao!</p>
-      <br>
-      <H3>关于二次开发的声明:</H3>
-      <br>
-      <p>作为一款开源平台。yupaopao很希望有更多的开发者一起参与到开发中。同时也鼓励各公司根据自身业务对平台进行二次开发及定制。
-        yupaopao v1.0.0 采用Apache2.0许可证,以下为许可中相关的义务与责任。</p>
-      <p>1.需要给代码的用户一份Apache Licence</p>
-      <p>2.如果你修改了代码，需要在被修改的文件中说明。</p>
-      <p>3.在延伸的代码中（修改和有源代码衍生的代码中）需要带有原来代码中的协议，商标，专利声明和其他原来作者规定需要包含的说明。</p>
-      <p>4.如果再发布的产品中包含一个Notice文件，则在Notice文件中需要带有Apache Licence。你可以在Notice中增加自己的许可，但不可以表现为对Apache Licence构成更改。</p>
-      <br>
-      <h3>免责声明:</h3>
-      <br>
-      <p>由yupaopao平台所产生的一切后果,yupaopao作者本人不负一切责任! 请在进行安全评估及测试体验后使用。</p>
-      <br>
-      <h3>当然用的喜欢,就打赏下我吧 ^_^ 左上角点击捐助</h3>
-      <br>
-      <p>此声明不会对非超级管理员用户推送。当接受上述条款并点击同意后,此通知将不会再次出现在超级管理员页面中。</p>
+    
     </Modal>
   </div>
 </template>
@@ -344,7 +325,7 @@
         .then(res => {
           this.$store.state.messageCount = res.data.count.messagecount
           if (res.data.statement !== '1') {
-            this.statement = true
+            this.statement = false
           }
         })
     },
