@@ -145,13 +145,13 @@
                   <FormItem label="查询最大Limit限制:">
                     <Input placeholder="查询最大的Limit数。" v-model="other.limit"></Input>
                   </FormItem>
-                  <FormItem label="自定义机房:">
+                  <FormItem label="自定义环境:">
                     <Tag v-for="item in other.con_room" :key="item" :name="item" type="border" closable color="blue"
                          @on-close="handleClose2">{{ item }}
                     </Tag>
                     <br>
-                    <Input placeholder="机房名称" v-model="other.foce" style="width: 30%"></Input>
-                    <Button icon="ios-plus-empty" type="dashed" size="small" @click="handleAdd">添加机房</Button>
+                    <Input placeholder="环境名称" v-model="other.foce" style="width: 30%"></Input>
+                    <Button icon="ios-plus-empty" type="dashed" size="small" @click="handleAdd">添加环境</Button>
                   </FormItem>
                   <FormItem label="脱敏字段:">
                     <Tag v-for="v in other.sensitive_list" :key="v" :name="v" type="border" closable color="blue"

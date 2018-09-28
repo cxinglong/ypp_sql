@@ -48,10 +48,10 @@
             <FormItem label="用户名:">
               <p>{{formItem.username}}</p>
             </FormItem>
-            <FormItem label="机房:">
+            <FormItem label="环境:">
               <p>{{formItem.computer_room}}</p>
             </FormItem>
-            <FormItem label="连接名:">
+            <FormItem label="业务或项目:">
               <p>{{formItem.connection_name}}</p>
             </FormItem>
             <FormItem label="数据库库名:">

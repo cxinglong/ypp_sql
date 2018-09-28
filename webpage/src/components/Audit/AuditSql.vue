@@ -86,10 +86,10 @@
         <FormItem label="工单编号:">
           <span>{{ formitem.work_id }}</span>
         </FormItem>
-        <FormItem label="选择环境:">
+        <FormItem label="环境:">
           <span>{{ formitem.computer_room }}</span>
         </FormItem>
-        <FormItem label="业务:">
+        <FormItem label="业务或项目:">
           <span>{{ formitem.connection_name }}</span>
         </FormItem>
         <FormItem label="数据库库名:">

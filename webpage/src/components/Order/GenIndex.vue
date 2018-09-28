@@ -24,12 +24,12 @@
           </p>
           <div class="edittable-test-con">
             <Form :model="formItem" :label-width="100" ref="formItem" :rules="ruleValidate">
-              <Form-item label="机房:" prop="computer_room">
+              <Form-item label="环境:" prop="computer_room">
                 <Select v-model="formItem.computer_room" placeholder="请选择" @on-change="Connection_Name">
                   <Option v-for="i in dataset" :value="i" :key="i">{{ i }}</Option>
                 </Select>
               </Form-item>
-              <Form-item label="连接名称:" prop="connection_name">
+              <Form-item label="业务或项目:" prop="connection_name">
                 <Select v-model="formItem.connection_name" placeholder="请选择" @on-change="DataBaseName">
                   <Option v-for="i in tableform.sqlname" :value="i.connection_name" :key="i.connection_name" filterable>
                     {{ i.connection_name }}
@@ -155,12 +155,12 @@
         ruleValidate: {
           computer_room: [{
             required: true,
-            message: '机房地址不得为空',
+            message: '环境地址不得为空',
             trigger: 'change'
           }],
           connection_name: [{
             required: true,
-            message: '连接名不得为空',
+            message: '业务或项目不得为空',
             trigger: 'change'
           }],
           basename: [{

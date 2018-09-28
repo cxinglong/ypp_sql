@@ -104,19 +104,19 @@
               <FormItem label="DDL是否可见:">
                 <p>{{formItem.ddl}}</p>
               </FormItem>
-              <FormItem label="可访问的连接名:" v-if="formItem.ddl === '是'">
+              <FormItem label="可访问的业务或项目:" v-if="formItem.ddl === '是'">
                 <p>{{formItem.ddlcon}}</p>
               </FormItem>
               <FormItem label="DML是否可见:">
                 <p>{{formItem.dml}}</p>
               </FormItem>
-              <FormItem label="可访问的连接名:" v-if="formItem.dml === '是'">
+              <FormItem label="可访问的业务或项目:" v-if="formItem.dml === '是'">
                 <p>{{formItem.dmlcon}}</p>
               </FormItem>
               <FormItem label="查询是否可见:">
                 <p>{{formItem.query}}</p>
               </FormItem>
-              <FormItem label="可访问的连接名:" v-if="formItem.query === '是'">
+              <FormItem label="可访问的业务或项目:" v-if="formItem.query === '是'">
                 <p>{{formItem.querycon}}</p>
               </FormItem>
               <FormItem label="字典是否可见:">
@@ -125,7 +125,7 @@
               <FormItem label="上级审核人:">
                 <p>{{formItem.person}}</p>
               </FormItem>
-              <FormItem label="可访问的连接名:" v-if="formItem.dic === '是'">
+              <FormItem label="可访问的业务或项目:" v-if="formItem.dic === '是'">
                 <p>{{formItem.diccon}}</p>
               </FormItem>
               <FormItem label="用户管理权限:">

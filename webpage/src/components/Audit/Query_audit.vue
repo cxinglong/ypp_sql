@@ -27,12 +27,12 @@
     <Modal v-model="editInfodModal" :width="800">
       <h3 slot="header" style="color:#2D8CF0">查询申请单详细内容</h3>
       <Form :label-width="120" label-position="right">
-        <FormItem label="机房">
+        <FormItem label="环境">
           <p>{{query.computer_room}}</p>
         </FormItem>
         <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
         <br>
-        <FormItem label="连接名:">
+        <FormItem label="业务或项目:">
           <p>{{query.connection_name}}</p>
         </FormItem>
         <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
