@@ -32,7 +32,7 @@
                 </Select>
               </FormItem>
 
-              <FormItem label="业务或项目:" prop="connection_name">
+              <FormItem label="业务项目:" prop="connection_name">
                 <Select v-model="step.connection_name" filterable>
                   <Option v-for="i in datalist.connection_name_list" :value="i.connection_name"
                           :key="i.connection_name">{{ i.connection_name }}
@@ -114,7 +114,7 @@
           }],
           connection_name: [{
             required: true,
-            message: '业务或项目不得为空',
+            message: '业务项目不得为空',
             trigger: 'change'
           }],
           basename: [{

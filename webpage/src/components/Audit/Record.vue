@@ -57,7 +57,7 @@
             key: 'computer_room'
           },
           {
-            title: '业务或项目',
+            title: '业务项目',
             key: 'connection_name'
           },
           {

@@ -21,7 +21,7 @@
                 <Option v-for="list in dataset" :value="list" :key="list">{{ list }}</Option>
               </Select>
             </Form-item>
-            <Form-item label="业务或项目:" prop="name">
+            <Form-item label="业务项目:" prop="name">
               <Input v-model="formItem.name" placeholder="请输入"></Input>
             </Form-item>
             <Form-item label="数据库地址:" prop="ip">
@@ -47,8 +47,8 @@
           <TabPane label="字典生成" icon="load-b" name="name1">
             <div class="edittable-testauto-con">
               <Form :model="dictionary" :label-width="80" ref="generation">
-                <FormItem label="业务或项目:" prop="dic">
-                  <Select v-model="dictionary.name" placeholder="请选择数据库业务或项目" style="width: 60%" @on-change="BaseList"
+                <FormItem label="业务项目:" prop="dic">
+                  <Select v-model="dictionary.name" placeholder="请选择数据库业务项目" style="width: 60%" @on-change="BaseList"
                           transfer>
                     <Option v-for="i in rowdata" :value="i.id" :key="i.connection_name">{{i.connection_name}}</Option>
                   </Select>
@@ -68,8 +68,8 @@
           <!-- 数据库字典model-->
           <TabPane label="字典删除" name="name2">
             <Form :model="dictionary" :label-width="80">
-              <FormItem label="业务或项目:">
-                <Select v-model="dictionary.delname" placeholder="请选择数据库业务或项目" style="width: 60%" @on-change="getdiclist"
+              <FormItem label="业务项目:">
+                <Select v-model="dictionary.delname" placeholder="请选择数据库业务项目" style="width: 60%" @on-change="getdiclist"
                         transfer>
                   <Option v-for="i in diclist" :value="i.Name" :key="i.Name">{{i.Name}}</Option>
                 </Select>
@@ -101,11 +101,11 @@
     <Modal v-model="delbaseModal" :width="500">
       <h3 slot="header" style="color:#2D8CF0">删除数据库</h3>
       <Form :label-width="100" label-position="right">
-        <FormItem label="数据库业务或项目">
+        <FormItem label="数据库业务项目">
           <Input v-model="delbasename" readonly="readonly"></Input>
         </FormItem>
-        <FormItem label="请输入数据库业务或项目">
-          <Input v-model="delconfirmbasename" placeholder="请确认数据库业务或项目"></Input>
+        <FormItem label="请输入数据库业务项目">
+          <Input v-model="delconfirmbasename" placeholder="请确认数据库业务项目"></Input>
         </FormItem>
       </Form>
       <div slot="footer">
@@ -116,7 +116,7 @@
     <Modal v-model="addDingding" :width="500">
       <h3 slot="header" style="color:#2D8CF0">添加钉钉推送接口</h3>
       <Form :label-width="100" label-position="right">
-        <FormItem label="数据库业务或项目">
+        <FormItem label="数据库业务项目">
           <Input v-model="dingname" readonly="readonly"></Input>
         </FormItem>
         <FormItem label="提交工单推送的消息内容:">
@@ -138,7 +138,7 @@
         <FormItem label="环境">
           <Input v-model="editbaseinfo.computer_room" readonly></Input>
         </FormItem>
-        <FormItem label="业务或项目:">
+        <FormItem label="业务项目:">
           <Input v-model="editbaseinfo.connection_name" readonly></Input>
         </FormItem>
         <FormItem label="数据库地址:">
@@ -173,7 +173,7 @@
       return {
         columns: [
           {
-            title: '业务或项目',
+            title: '业务项目',
             key: 'connection_name'
           },
           {
@@ -248,7 +248,7 @@
         ruleInline: {
           name: [{
             required: true,
-            message: '请填写业务或项目',
+            message: '请填写业务项目',
             trigger: 'blur'
           }],
           ip: [{
@@ -327,7 +327,7 @@
       add () {
         for (let i of this.rowdata) {
           if (i.connection_name === this.formItem.name) {
-            util.err_notice('业务或项目重复,请更改为其他!')
+            util.err_notice('业务项目重复,请更改为其他!')
             return
           }
         }
@@ -502,7 +502,7 @@
             })
         } else {
           this.$Message.error({
-            content: '请确认输入的业务或项目一致！'
+            content: '请确认输入的业务项目一致！'
           })
         }
       },

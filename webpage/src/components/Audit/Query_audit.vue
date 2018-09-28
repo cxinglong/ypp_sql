@@ -32,7 +32,7 @@
         </FormItem>
         <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
         <br>
-        <FormItem label="业务或项目:">
+        <FormItem label="业务项目:">
           <p>{{query.connection_name}}</p>
         </FormItem>
         <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>

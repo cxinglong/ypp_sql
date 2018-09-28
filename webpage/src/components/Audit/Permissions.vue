@@ -36,7 +36,7 @@
             <p v-else>是</p>
           </FormItem>
           <template v-if="permission.ddl !== '0'">
-            <FormItem label="业务或项目:">
+            <FormItem label="业务项目:">
               <span v-for="i in permission.ddlcon" style="margin-left: 1%">{{i}}</span>
             </FormItem>
           </template>
@@ -47,7 +47,7 @@
             <p v-else>是</p>
           </FormItem>
           <template v-if="permission.dml === '1'">
-            <FormItem label="业务或项目:">
+            <FormItem label="业务项目:">
               <span v-for="i in permission.dmlcon" style="margin-left: 1%">{{i}}</span>
             </FormItem>
           </template>
@@ -63,7 +63,7 @@
             <p v-else>是</p>
           </FormItem>
           <template v-if="permission.query === '1'">
-            <FormItem label="业务或项目:">
+            <FormItem label="业务项目:">
               <span v-for="i in permission.querycon" style="margin-left: 1%">{{i}}</span>
             </FormItem>
           </template>
@@ -82,7 +82,7 @@
               <p v-if="permission.dicexport === '0'">否</p>
               <p v-else>是</p>
             </FormItem>
-            <FormItem label="业务或项目:">
+            <FormItem label="业务项目:">
               <span v-for="i in permission.diccon" style="margin-left: 1%">{{i}}</span>
             </FormItem>
           </template>

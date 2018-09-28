@@ -51,7 +51,7 @@
             <FormItem label="环境:">
               <p>{{formItem.computer_room}}</p>
             </FormItem>
-            <FormItem label="业务或项目:">
+            <FormItem label="业务项目:">
               <p>{{formItem.connection_name}}</p>
             </FormItem>
             <FormItem label="数据库库名:">

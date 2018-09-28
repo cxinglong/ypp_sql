@@ -28,7 +28,7 @@
                   <Option v-for="i in dataset" :value="i" :key="i">{{ i }}</Option>
                 </Select>
               </Form-item>
-              <Form-item label="业务或项目:" prop="connection_name">
+              <Form-item label="业务项目:" prop="connection_name">
                 <Select v-model="formItem.connection_name" placeholder="请选择" @on-change="DataBaseName">
                   <Option v-for="i in tableform.sqlname" :value="i.connection_name" :key="i.connection_name" filterable>
                     {{ i.connection_name }}
@@ -329,7 +329,7 @@
           }],
           connection_name: [{
             required: true,
-            message: '业务或项目不得为空',
+            message: '业务项目不得为空',
             trigger: 'change'
           }],
           basename: [{

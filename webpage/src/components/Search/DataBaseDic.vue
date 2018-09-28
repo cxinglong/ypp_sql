@@ -26,11 +26,11 @@ a:active {
     <Card>
       <p slot="title">
         <Icon type="ios-redo"></Icon>
-        选择数据库
+        选择目标数据库
       </p>
       <div class="edittable-self-con">
         <Form :label-width="80">
-          <Form-item label="数据库连接:">
+          <Form-item label="业务项目:">
             <Select v-model="formItem.namedata" @on-change="InitializationTableInfo" filterable>
                 <Option v-for="i in TableList" :value="i" :key="i">{{ i }}</Option>
               </Select>
