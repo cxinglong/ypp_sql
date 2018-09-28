@@ -53,7 +53,7 @@
           </template>
           <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
           <br>
-          <FormItem label="上级审核人范围:">
+          <FormItem label="审核人范围:">
             <span v-for="i in permission.person" style="margin-left: 1%">{{i}}</span>
           </FormItem>
           <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
@@ -63,7 +63,7 @@
             <p v-else>是</p>
           </FormItem>
           <template v-if="permission.query === '1'">
-            <FormItem label="连接名:">
+            <FormItem label="业务:">
               <span v-for="i in permission.querycon" style="margin-left: 1%">{{i}}</span>
             </FormItem>
           </template>
@@ -82,7 +82,7 @@
               <p v-if="permission.dicexport === '0'">否</p>
               <p v-else>是</p>
             </FormItem>
-            <FormItem label="连接名:">
+            <FormItem label="业务:">
               <span v-for="i in permission.diccon" style="margin-left: 1%">{{i}}</span>
             </FormItem>
           </template>

@@ -86,10 +86,10 @@
         <FormItem label="工单编号:">
           <span>{{ formitem.work_id }}</span>
         </FormItem>
-        <FormItem label="机房:">
+        <FormItem label="选择环境:">
           <span>{{ formitem.computer_room }}</span>
         </FormItem>
-        <FormItem label="连接名称:">
+        <FormItem label="业务:">
           <span>{{ formitem.connection_name }}</span>
         </FormItem>
         <FormItem label="数据库库名:">
@@ -107,14 +107,14 @@
             <p v-for="i in sql">{{ i }}</p>
           </div>
         </FormItem>
-        <FormItem label="终审与执行:" v-if="multi && auth === 'admin'">
+        <FormItem label="DBA执行:" v-if="multi && auth === 'admin'">
           <Select v-model="multi_name" style="width: 20%">
             <Option v-for="i in multi_list" :value="i.username" :key="i.username">{{i.username}}</Option>
           </Select>
         </FormItem>
       </Form>
       <template>
-        <p class="pa">SQL检查结果:</p>
+        <p class="pa">SQL审核结果:</p>
         <Table :columns="columnsName" :data="dataId" stripe border width="860" height="200"></Table>
       </template>
 
@@ -185,7 +185,7 @@
     <Modal v-model="confirm" @on-ok="put_button" >
       <p slot="header" style="color:#f60;font-size: 16px">
         <Icon type="information-circled"></Icon>
-        <span>您确定执行此操作吗？</span>
+        <span>您确定执行操作吗？</span>
       </p>
       <Form label-position="right">
         <FormItem label="工单说明:">
