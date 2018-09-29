@@ -24,6 +24,7 @@
           </div>
         </div>
         <div class="header-avator-con">
+          <a href="/static/tutorial.pdf" target="_blank">使用教程</a>
           <div @click="handleFullScreen" v-if="showFullScreenBtn" class="full-screen-btn-con">
             <Tooltip :content="isFullScreen ? '退出全屏' : '全屏'" placement="bottom">
               <Icon :type="isFullScreen ? 'arrow-shrink' : 'arrow-expand'" :size="23"></Icon>
