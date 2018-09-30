@@ -17,7 +17,7 @@
   <div id="band" class="div-relative">
     <div class="div-a">
       <div style='margin-left: 10%'>
-        <Icon  img="/static/logo.png" size="60" style="margin-top:5%"></Icon>
+        <!-- <Icon  img="/static/logo.png" size="60" style="margin-top:5%"></Icon> -->
         <p style="margin-left: 20%;margin-top: -10%;font-size: 20px; color: #0066cc">yupaopao SQL 审核平台</p>
       </div>
       <br>
