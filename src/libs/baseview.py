@@ -9,8 +9,6 @@ from rest_framework.views import APIView
 
 class BaseView(APIView):
     permission_classes = (IsAuthenticated,)
-    #permission_classes = ()
-
 
     def get(self, request, args: str = None):
         pass
@@ -27,7 +25,7 @@ class BaseView(APIView):
 
 class SuperUserpermissions(APIView):
     permission_classes = (IsAdminUser,)
-    #permission_classes = ()
+
     def get(self, request, args: str = None):
         pass
 

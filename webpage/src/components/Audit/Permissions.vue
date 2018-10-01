@@ -3,7 +3,7 @@
     <Row>
       <Card>
         <p slot="title">
-          <Icon type="person"></Icon>
+          <Icon type="md-person"></Icon>
           权限审核
         </p>
         <Row>
@@ -36,7 +36,7 @@
             <p v-else>是</p>
           </FormItem>
           <template v-if="permission.ddl !== '0'">
-            <FormItem label="业务项目:">
+            <FormItem label="连接名:">
               <span v-for="i in permission.ddlcon" style="margin-left: 1%">{{i}}</span>
             </FormItem>
           </template>
@@ -47,13 +47,13 @@
             <p v-else>是</p>
           </FormItem>
           <template v-if="permission.dml === '1'">
-            <FormItem label="业务项目:">
+            <FormItem label="连接名:">
               <span v-for="i in permission.dmlcon" style="margin-left: 1%">{{i}}</span>
             </FormItem>
           </template>
           <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
           <br>
-          <FormItem label="审核人范围:">
+          <FormItem label="上级审核人范围:">
             <span v-for="i in permission.person" style="margin-left: 1%">{{i}}</span>
           </FormItem>
           <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
@@ -63,7 +63,7 @@
             <p v-else>是</p>
           </FormItem>
           <template v-if="permission.query === '1'">
-            <FormItem label="业务项目:">
+            <FormItem label="连接名:">
               <span v-for="i in permission.querycon" style="margin-left: 1%">{{i}}</span>
             </FormItem>
           </template>
@@ -82,7 +82,7 @@
               <p v-if="permission.dicexport === '0'">否</p>
               <p v-else>是</p>
             </FormItem>
-            <FormItem label="业务项目:">
+            <FormItem label="连接名:">
               <span v-for="i in permission.diccon" style="margin-left: 1%">{{i}}</span>
             </FormItem>
           </template>
@@ -141,16 +141,16 @@
               let color = ''
               let text = ''
               if (row.status === 2) {
-                color = 'blue'
+                color = 'primary'
                 text = '待审核'
               } else if (row.status === 0) {
-                color = 'red'
+                color = 'error'
                 text = '驳回'
               } else if (row.status === 1) {
-                color = 'green'
+                color = 'success'
                 text = '已执行'
               } else {
-                color = 'yellow'
+                color = 'warning'
                 text = '执行中'
               }
               return h('Tag', {

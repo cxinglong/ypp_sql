@@ -16,13 +16,13 @@
             <div id="showImage" class="margin-bottom-10">
 
               <Form ref="formItem" :model="formItem" :rules="ruleValidate" :label-width="80">
-                <FormItem label="环境:" prop="computer_room">
+                <FormItem label="机房:" prop="computer_room">
                   <Select v-model="formItem.computer_room" @on-change="Connection_Name">
                     <Option v-for="i in datalist.computer_roomlist" :key="i" :value="i">{{i}}</Option>
                   </Select>
                 </FormItem>
 
-                <FormItem label="业务项目:" prop="connection_name">
+                <FormItem label="连接名:" prop="connection_name">
                   <Select v-model="formItem.connection_name" @on-change="DataBaseName" filterable>
                     <Option v-for="i in datalist.connection_name_list" :value="i.connection_name"
                             :key="i.connection_name">{{ i.connection_name }}
@@ -40,12 +40,12 @@
                   <Input v-model="formItem.text" placeholder="请输入"></Input>
                 </FormItem>
 
-                <FormItem label="审批人:" prop="assigned">
+                <FormItem label="指定审核人:" prop="assigned">
                   <Select v-model="formItem.assigned" filterable>
                     <Option v-for="i in this.assigned" :value="i" :key="i">{{i}}</Option>
                   </Select>
                 </FormItem>
-                
+
                 <FormItem label="是否备份">
                   <RadioGroup v-model="formItem.backup">
                     <Radio label="1">是</Radio>
@@ -61,16 +61,16 @@
                     :min="0">
                   </InputNumber>
                 </FormItem>
-                
+
               </Form>
               <Form :label-width="30">
                 <FormItem>
-                  <Button type="info" icon="paintbucket" @click.native="beautify()">美化</Button>
-                  <Button type="error" icon="trash-a" @click.native="ClearForm()" style="margin-left: 10%">清除</Button>
+                  <Button type="info" icon="md-brush" @click.native="beautify()">美化</Button>
+                  <Button type="error" icon="md-trash" @click.native="ClearForm()" style="margin-left: 10%">清除</Button>
                 </FormItem>
 
                 <FormItem>
-                  <Button type="warning" icon="android-search" @click.native="test_sql()">检测</Button>
+                  <Button type="warning" icon="md-search" @click.native="test_sql()">检测</Button>
                   <Button type="success" icon="ios-redo" @click.native="SubmitSQL()" style="margin-left: 10%"
                           :disabled="this.validate_gen">提交
                   </Button>
@@ -94,7 +94,7 @@
       <Col span="18" class="padding-left-10">
         <Card>
           <p slot="title">
-            <Icon type="ios-crop-strong"></Icon>
+            <Icon type="ios-crop"></Icon>
             填写sql语句
           </p>
           <editor v-model="formItem.textarea" @init="editorInit" @setCompletions="setCompletions"></editor>
@@ -173,12 +173,12 @@
         ruleValidate: {
           computer_room: [{
             required: true,
-            message: '环境地址不得为空',
+            message: '机房地址不得为空',
             trigger: 'change'
           }],
           connection_name: [{
             required: true,
-            message: '业务项目不得为空',
+            message: '连接名不得为空',
             trigger: 'change'
           }],
           basename: [{
@@ -190,18 +190,12 @@
             required: true,
             message: '说明不得为空',
             trigger: 'blur'
-          },
-            {
-              type: 'string',
-              max: 20,
-              message: '最多20个字',
-              trigger: 'blur'
-            }
+          }
           ],
           assigned: [{
             required: true,
-            message: '说明不得为空',
-            trigger: 'blur'
+            message: '审核人不得为空',
+            trigger: 'change'
           }]
         },
         id: null,
@@ -322,7 +316,7 @@
               axios.post(`${util.url}/sqlsyntax/`, {
                 'data': JSON.stringify(this.formItem),
                 'sql': JSON.stringify(this.datalist.sqllist),
-                'user': sessionStorage.getItem('user'),
+                'real_name': sessionStorage.getItem('real_name'),
                 'type': 1,
                 'id': this.id[0].id
               })

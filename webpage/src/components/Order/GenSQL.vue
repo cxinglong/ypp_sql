@@ -2,10 +2,6 @@
   @import '../../styles/common.less';
   @import 'components/table.less';
 
-  .demo-spin-icon-load {
-    animation: ani-demo-spin 1s linear infinite;
-  }
-
   p {
     word-wrap: break-word;
     word-break: break-all;
@@ -23,14 +19,14 @@
           </p>
           <div class="edittable-test-con">
             <Form :model="formItem" :label-width="100" ref="formItem" :rules="ruleValidate">
-              <Form-item label="环境:" prop="computer_room">
+              <Form-item label="机房:" prop="computer_room">
                 <Select v-model="formItem.computer_room" placeholder="请选择" @on-change="Connection_Name">
                   <Option v-for="i in dataset" :value="i" :key="i">{{ i }}</Option>
                 </Select>
               </Form-item>
-              <Form-item label="业务项目:" prop="connection_name">
-                <Select v-model="formItem.connection_name" placeholder="请选择" @on-change="DataBaseName">
-                  <Option v-for="i in tableform.sqlname" :value="i.connection_name" :key="i.connection_name" filterable>
+              <Form-item label="连接名称:" prop="connection_name">
+                <Select v-model="formItem.connection_name" placeholder="请选择" @on-change="DataBaseName" filterable>
+                  <Option v-for="i in tableform.sqlname" :value="i.connection_name" :key="i.connection_name" >
                     {{ i.connection_name }}
                   </Option>
                 </Select>
@@ -66,12 +62,12 @@
       <Col span="18" class="padding-left-10">
         <Card>
           <p slot="title">
-            <Icon type="android-remove"></Icon>
+            <Icon type="md-remove"></Icon>
             表结构详情
           </p>
           <div class="edittable-table-height-con">
             <Tabs :value="tabs">
-              <TabPane label="手动模式" name="order1" icon="edit">
+              <TabPane label="手动模式" name="order1" icon="md-code">
                 <Form>
                   <FormItem>
                     <editor v-model="formDynamic" @init="editorInit" @setCompletions="setCompletions"></editor>
@@ -87,7 +83,7 @@
                   </FormItem>
                 </Form>
               </TabPane>
-              <TabPane label="生成添加字段" name="order3" icon="plus">
+              <TabPane label="生成添加字段" name="order3" icon="md-add">
                 <Table stripe :columns="addcolums" :data="add_row" height="385" border></Table>
                 <div style="margin-top: 5%">
                   <Input v-model="Add_tmp.Field" placeholder="字段名" style="width: 10%"></Input>
@@ -105,7 +101,7 @@
                   <Button type="info" @click.native="AddColumns()">添加</Button>
                 </div>
               </TabPane>
-              <TabPane label="生成修改&删除字段" name="order4" icon="edit">
+              <TabPane label="生成修改&删除字段" name="order4" icon="md-crop">
                 <edittable refs="table2" v-model="TableDataNew" :columns-list="tabcolumns" @index="remove"
                            @on-change="cell_change"></edittable>
               </TabPane>
@@ -119,7 +115,7 @@
       <Row>
         <Card>
           <div class="step-header-con">
-            <h3>yupaopao SQL平台审核工单</h3>
+            <h3>Yearning SQL平台审核工单</h3>
           </div>
           <p class="step-content"></p>
           <Form class="step-form" :label-width="100">
@@ -136,9 +132,9 @@
               <p v-for="i in sql">{{i}}</p>
             </FormItem>
             <FormItem label="工单提交说明:" required>
-              <Input v-model="formItem.text" placeholder="最多不超过20个字"></Input>
+              <Input v-model="formItem.text" placeholder="请输入工单说明"></Input>
             </FormItem>
-            <FormItem label="审批人:" required>
+            <FormItem label="指定审核人:" required>
               <Select v-model="formItem.assigned" filterable transfer>
                 <Option v-for="i in assigned" :value="i" :key="i">{{i}}</Option>
               </Select>
@@ -324,12 +320,12 @@
         ruleValidate: {
           computer_room: [{
             required: true,
-            message: '环境地址不得为空',
+            message: '机房地址不得为空',
             trigger: 'change'
           }],
           connection_name: [{
             required: true,
-            message: '业务项目不得为空',
+            message: '连接名不得为空',
             trigger: 'change'
           }],
           basename: [{
@@ -344,15 +340,9 @@
           }],
           text: [{
             required: true,
-            message: '说明不得为空',
+            message: '提交说明不得为空',
             trigger: 'change'
-          },
-            {
-              type: 'string',
-              max: 20,
-              message: '最多20个字',
-              trigger: 'blur'
-            }
+          }
           ]
         },
         formItem: {
@@ -527,10 +517,12 @@
               render: (h) => {
                 return h('div', [
                   h('Icon', {
-                    'class': 'demo-spin-icon-load',
                     props: {
-                      type: 'load-c',
-                      size: 30
+                      size: 30,
+                      type: 'ios-loading'
+                    },
+                    style: {
+                      animation: 'ani-demo-spin 1s linear infinite'
                     }
                   }),
                   h('div', '数据库连接中,请稍后........')
@@ -548,6 +540,7 @@
               })
               .catch(() => {
                 util.err_notice('连接失败！详细信息请查看日志')
+                this.$Spin.hide()
               })
             this.getindex()
           } else {
@@ -625,7 +618,7 @@
             axios.post(`${util.url}/sqlsyntax/`, {
               'data': JSON.stringify(this.formItem),
               'sql': JSON.stringify(this.sql),
-              'user': sessionStorage.getItem('user'),
+              'real_name': sessionStorage.getItem('real_name'),
               'type': 0,
               'id': this.id[0].id
             })

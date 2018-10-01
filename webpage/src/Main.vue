@@ -4,10 +4,10 @@
 <template>
   <div id="main" class="main" :class="{'main-hide-text': hideMenuText}">
     <div class="sidebar-menu-con"
-         :style="{width: hideMenuText?'60px':'200px', overflow: hideMenuText ? 'visible' : 'auto', background: $store.state.menuTheme === 'dark'?'#495060':'white'}">
+         :style="{width: hideMenuText?'60px':'200px', overflow: hideMenuText ? 'visible' : 'auto', background: '#515a6e'}">
       <div class="logo-con">
       </div>
-      <sidebar-menu v-if="!hideMenuText" :menuList="menuList" :iconSize="14"/>
+      <sidebar-menu v-if="!hideMenuText" :menuList="menuList" :iconSize="18"/>
       <sidebar-menu-shrink :icon-color="menuIconColor" v-else :menuList="menuList"/>
     </div>
     <div class="main-header-con" :style="{paddingLeft: hideMenuText?'60px':'200px'}">
@@ -15,7 +15,7 @@
         <div class="navicon-con">
           <Button :style="{transform: 'rotateZ(' + (this.hideMenuText ? '-90' : '0') + 'deg)'}" type="text"
                   @click="toggleClick">
-            <Icon type="navicon" size="32"></Icon>
+            <Icon type="md-menu" size="32"></Icon>
           </Button>
         </div>
         <div class="header-middle-con">
@@ -24,35 +24,33 @@
           </div>
         </div>
         <div class="header-avator-con">
-          <a href="/static/tutorial.pdf" target="_blank">使用教程</a>
+          <a @click="getc = true">捐助</a>
+          <Modal
+            v-model="getc"
+            title="捐助Yearning"
+            width="640">
+            <h3>让Yearning持续提供更好的功能与服务。</h3>
+            <br>
+            <img height="300" width="300" src="./assets/alipay.jpg"/>
+            <img height="300" width="300" src="./assets/wechat.jpg"/>
+          </Modal>
+          <a href="https://cookiey.github.io/Yearning-document/used/" target="_Blank">使用说明</a>
           <div @click="handleFullScreen" v-if="showFullScreenBtn" class="full-screen-btn-con">
             <Tooltip :content="isFullScreen ? '退出全屏' : '全屏'" placement="bottom">
-              <Icon :type="isFullScreen ? 'arrow-shrink' : 'arrow-expand'" :size="23"></Icon>
+              <Icon :type="isFullScreen ? 'md-contract' : 'md-expand'" :size="23"></Icon>
             </Tooltip>
           </div>
           <div @click="lockScreen" class="lock-screen-btn-con">
             <Tooltip content="锁屏" placement="bottom">
-              <Icon type="locked" :size="20"></Icon>
+              <Icon type="md-lock" :size="20"></Icon>
             </Tooltip>
-          </div>
-          <div @click="showMessage" class="message-con">
-            <Tooltip :content="messageCount > 0 ? '有' + messageCount + '条未读消息' : '无未读消息'" placement="bottom">
-              <Badge :count="messageCount" dot>
-                <Icon type="ios-bell" :size="22"></Icon>
-              </Badge>
-            </Tooltip>
-          </div>
-          <div class="switch-theme-con">
-            <Row class="switch-theme" type="flex" justify="center" align="middle">
-              <theme-dropdown-menu></theme-dropdown-menu>
-            </Row>
           </div>
           <div class="user-dropdown-menu-con">
             <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
               <Dropdown trigger="click" @on-click="handleClickUserDropdown">
                 <a href="javascript:void(0)">
                   <span class="main-user-name">{{ userName }}</span>
-                  <Icon type="arrow-down-b"></Icon>
+                  <Icon type="md-arrow-dropdown" />
                 </a>
                 <DropdownMenu slot="list">
                   <DropdownItem name="ownSpace">个人中心</DropdownItem>
@@ -87,7 +85,7 @@
     </div>
     <Modal
       v-model="statement"
-      title="欢迎使用yupaopao SQL审核平台"
+      title="欢迎使用Yearning SQL审核平台"
       width="600"
       :mask-closable="false"
       :closable="false"
@@ -95,7 +93,27 @@
       ok-text="同意"
       @on-ok="statementput"
     >
-    
+      <h3>关于Yearning:</h3>
+      <br>
+      <p>Yearning 是一款基于inception的开源SQL审核平台。设计的目的便是让DBA能够从手动审核的环境中释放出来.让sql审核更加流程化,标准化,自动化。非常欢迎大家体验并使用Yearning!</p>
+      <br>
+      <H3>关于二次开发的声明:</H3>
+      <br>
+      <p>作为一款开源平台。Yearning很希望有更多的开发者一起参与到开发中。同时也鼓励各公司根据自身业务对平台进行二次开发及定制。
+        Yearning v1.3.1 采用AGPL 3.0许可证,以下为许可中相关的义务与责任。</p>
+      <br>
+      <p>1.未经原作者授权不得将Yearning 用于任何商业目的。包括通过网络提供任何基于yearning的商业服务。</p>
+      <p>2.如果你修改了代码，需要在被修改的文件中说明。</p>
+      <p>3.如二次开发并公布的情况下(内部使用不在该条款之内)，该软件必须为开源项目，不可为任何商业性质的商业软件。如需商业化必须获得原作者授权。</p>
+      <p>4.本平台所有条款符合相应开源许可，请严格按照相关许可使用及开发。</p>
+      <br>
+      <h3>免责声明:</h3>
+      <br>
+      <p>由Yearning平台所产生的一切后果,Yearning作者本人不负一切责任! 请在进行安全评估及测试体验后使用。</p>
+      <br>
+      <h3>当然用的喜欢,就打赏下我吧 ^_^ 左上角点击捐助</h3>
+      <br>
+      <p>此声明不会对非超级管理员用户推送。当接受上述条款并点击同意后,此通知将不会再次出现在超级管理员页面中。</p>
     </Modal>
   </div>
 </template>
@@ -103,7 +121,6 @@
   import sidebarMenu from './main_components/sidebarMenu.vue'
   import tagsPageOpened from './main_components/tagsPageOpened.vue'
   import breadcrumbNav from './main_components/breadcrumbNav.vue'
-  import themeDropdownMenu from './main_components/themeDropdownMenu.vue'
   import sidebarMenuShrink from './main_components/sidebarMenuShrink.vue'
   import axios from 'axios'
   // ;
@@ -114,7 +131,6 @@
       sidebarMenu,
       tagsPageOpened,
       breadcrumbNav,
-      themeDropdownMenu,
       sidebarMenuShrink
     },
     data () {
@@ -143,10 +159,7 @@
         return this.$store.state.currentPath // 当前面包屑数组
       },
       menuIconColor () {
-        return this.$store.state.menuTheme === 'dark' ? 'white' : '#495060'
-      },
-      messageCount () {
-        return this.$store.state.messageCount
+        return 'white'
       }
     },
     methods: {
@@ -192,17 +205,12 @@
           }
         }
       },
-      // 消息中心
-      showMessage () {
-        util.openPage(this, 'message_index', '消息中心')
-      },
       // 锁屏
       lockScreen () {
         let lockScreenBack = document.getElementById('lock_screen_back')
         lockScreenBack.style.transition = 'all 3s'
         lockScreenBack.style.zIndex = 10000
         lockScreenBack.style.boxShadow = '0 0 0 ' + this.lockScreenSize + 'px #667aa6 inset'
-        this.showUnlock = true
         this.$store.commit('lock')
         sessionStorage.setItem('last_page_name', this.$route.name) // 本地存储锁屏之前打开的页面以便解锁后打开
         setTimeout(() => {
@@ -322,11 +330,11 @@
         }]
       }
       this.init()
-      axios.get(`${util.url}/homedata/messages?username=${sessionStorage.getItem('user')}`)
+      axios.get(`${util.url}/homedata/messages`)
         .then(res => {
-          this.$store.state.messageCount = res.data.count.messagecount
-          if (res.data.statement !== '1') {
-            this.statement = false
+          console.log(res.data.statement)
+          if (res.data.statement !== 'pass') {
+            this.statement = true
           }
         })
     },

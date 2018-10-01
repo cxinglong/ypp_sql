@@ -73,7 +73,7 @@ class order_detail(baseview.BaseView):
         else:
             type_id = SqlOrder.objects.filter(id=order_id).first()
             try:
-                if status == '1':
+                if status == '1' or status == '4':
                     data = SqlRecord.objects.filter(workid=work_id).all()
                     _serializers = Record(data, many=True)
                     return Response({'data': _serializers.data, 'type': type_id.type})
@@ -157,6 +157,7 @@ class order_detail(baseview.BaseView):
                         rollback_sql.append(c['rollback_statement'])
                 rollback_sql = sorted(rollback_sql)
                 if rollback_sql == []: return HttpResponse(status=500)
+                rollback_sql = [{'sql': x} for x in rollback_sql]
                 return Response({'data': data[0], 'sql': rollback_sql, 'type': 1})
             except Exception as e:
                 CUSTOM_ERROR.error(f'{e.__class__.__name__}: {e}')
