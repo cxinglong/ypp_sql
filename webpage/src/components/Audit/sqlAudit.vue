@@ -96,7 +96,7 @@
         <FormItem>
             <Table :columns="sql_columns" :data="sql" height="200"></Table>
         </FormItem>
-        <FormItem label="选择执行人:" v-if="multi && auth === 'admin'">
+        <FormItem label="DBA:" v-if="multi && auth === 'admin'">
           <Select v-model="multi_name" style="width: 20%">
             <Option v-for="i in multi_list" :value="i.username" :key="i.username">{{i.username}}</Option>
           </Select>
@@ -108,14 +108,14 @@
       </template>
 
       <div slot="footer">
-        <Button type="warning" @click.native="test_button()" v-if="auth === 'admin'">检测sql</Button>
+        <Button type="warning" @click.native="test_button()">检测sql</Button>
         <Button @click="modal2 = false">取消</Button>
         <template v-if="switch_show">
           <template v-if="multi">
             <Button type="error" @click="out_button()" :disabled="summit" v-if="auth === 'admin'">驳回</Button>
             <Button type="error" @click="out_button()" v-else>驳回</Button>
             <Button type="success" @click="agreed_button()" :disabled="summit" v-if="auth === 'admin'">同意</Button>
-            <Button type="success" @click="put_button()" v-else-if="auth === 'perform'">执行</Button>
+            <Button type="success" @click="showAlert()" :disabled="summit" v-else-if="auth === 'perform'">执行</Button>
           </template>
           <template v-else>
             <Button type="error" @click="out_button()" :disabled="summit">驳回</Button>
@@ -140,7 +140,7 @@
       :closable="false"
       :mask-closable="false"
       @on-cancel="callback_method"
-      @on-ok="stop_osc"
+      @on-ok="show_confirm"
       ok-text="终止osc"
       cancel-text="关闭窗口">
       <Form>
@@ -167,6 +167,46 @@
             </span>
             </div>
           </i-circle>
+        </FormItem>
+      </Form>
+    </Modal>
+
+
+    <Modal v-model="confirm" @on-ok="put_button" >
+      <p slot="header" style="color:#f60;font-size: 16px">
+        <Icon type="information-circled"></Icon>
+        <span>您确定执行操作吗？</span>
+      </p>
+      <Form label-position="right">
+        <FormItem label="工单说明:">
+          <p>{{ formitem.text }}</p>
+        </FormItem>
+        <FormItem label="数据库:">
+          <p>{{ formitem.basename }}</p>
+        </FormItem>
+        <FormItem label="SQL语句:">
+          <br>
+          <div class="tree">
+            <p v-for="i in sql">{{ i }}</p>
+          </div>
+        </FormItem>
+      </Form>
+    </Modal>
+
+    <Modal v-model="osc_confirm" @on-ok="stop_osc" >
+      <p slot="header" style="color:#f60;font-size: 16px">
+        <Icon type="information-circled"></Icon>
+        <span>您确定终止操作吗？</span>
+      </p>
+      <Form label-position="right">
+        <FormItem label="数据库:">
+          <p>{{ formitem.basename }}</p>
+        </FormItem>
+        <FormItem label="SQL语句:">
+          <br>
+          <div class="tree">
+            <p v-for="i in sql">{{ i }}</p>
+          </div>
         </FormItem>
       </Form>
     </Modal>
@@ -482,6 +522,10 @@
             })
         }
       },
+      showAlert () {
+        this.modal2 = false
+        this.confirm = true
+      },
       put_button () {
         this.modal2 = false
         this.tmp[this.togoing].status = 3
@@ -593,6 +637,9 @@
       },
       callback_method () {
         clearInterval(this.callback_time)
+      },
+      show_confirm () {
+        this.osc_confirm = true
       },
       stop_osc () {
         axios.delete(`${util.url}/osc/${this.oscsha1}`)

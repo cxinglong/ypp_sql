@@ -14,9 +14,7 @@
 <template>
   <Menu width="auto" theme="dark" @on-select="currentPageTab" :active-name="currentPageName" accordion>
     <MenuItem name="main">
-      <Icon type="md-cube" size="50" class="MenuIcon"></Icon>
-      <br>
-      <span>Yearning SQL审核平台</span>
+      <span>比心数据库自动化平台</span>
     </MenuItem>
     <MenuItem name="home_index">
       <Icon type="md-home" :size="iconSize"></Icon>
