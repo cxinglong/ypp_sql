@@ -233,11 +233,7 @@ class authgroup(baseview.BaseView):
 
 
 class ldapauth(baseview.AnyLogin):
-    '''
-
-    ldap用户认证
-
-    '''
+ 
 
     def post(self, request, args: str = None):
         try:
@@ -268,7 +264,7 @@ class ldapauth(baseview.AnyLogin):
                     token = jwt_encode_handler(jwt_payload_handler(_user))
                     return Response({'token': token, 'res': '', 'permissions': 'guest'})
             else:
-                return Response({'token': 'null', 'res': 'ldap账号认证失败,请检查ldap账号或ldap配置!'})
+                return Response({'token': 'null', 'res': '用户或密码错误!'})
 
 
 class login_register(baseview.AnyLogin):

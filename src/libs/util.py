@@ -102,7 +102,7 @@ def test_auth(username, password, host, type, sc, domain):
     else:
         return False
 
-
+'''
 def auth(username, password):
     un_init = init_conf()
     ldap = ast.literal_eval(un_init['ldap'])
@@ -157,6 +157,31 @@ def auth(username, password):
                 return False
         else:
             return False
+    else:
+        return False
+'''
+
+def auth(username, password):
+    un_init = init_conf()
+    ldap = ast.literal_eval(un_init['ldap'])
+    LDAP_SERVER = ldap['host']
+    LDAP_DOMAIN = ldap['domain']
+    LDAP_TYPE = ldap['type']
+    LDAP_SCBASE = ldap['sc']
+    if LDAP_TYPE == '1':
+        user = username + '@' + LDAP_DOMAIN
+    elif LDAP_TYPE == '2':
+        user = "uid=%s,%s" % (username, LDAP_SCBASE)
+    else:
+        user = "cn=%s,%s" % (username, LDAP_SCBASE)
+    c = ldap3.Connection(
+        ldap3.Server(LDAP_SERVER, get_info=ldap3.ALL),
+        user=user,
+        password=password)
+    ret = c.bind()
+    if ret:
+        c.unbind()
+        return True
     else:
         return False
 
