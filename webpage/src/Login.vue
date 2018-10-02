@@ -21,8 +21,23 @@
       </div>
       <br>
       <Card>
-        <Tabs value="ldap" style="max-height: 300px;">
-          <TabPane label="用户登录" name="ldap">
+        <Tabs value="custom" style="max-height: 300px;">
+          <TabPane label="用户登录" name="custom">
+            <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
+              <Form-item prop="user" style="width: 100%">
+                <Input v-model="formInline.user" placeholder="Username"></Input>
+              </Form-item>
+              <Form-item prop="password" style="width: 100%">
+                <Input type="password" v-model="formInline.password" placeholder="Password"></Input>
+              </Form-item>
+              <Form-item style="width: 100%">
+                <Button type="primary" @click="authdata()" style="width: 100%" size="large">登录</Button>
+                <p style="margin-left: 5%;margin-top: 5%">Power By DBA 使用chrome获得最佳体验</p>
+              </Form-item>
+            </Form>
+          </TabPane>
+
+          <TabPane label="域账户注册" name="ldap">
             <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
               <Form-item prop="user" style="width: 100%">
                 <Input v-model="formInline.user" placeholder="ldap_Username"></Input>
@@ -38,20 +53,6 @@
             </Form>
           </TabPane>
 
-          <TabPane label="后台管理" name="custom">
-            <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
-              <Form-item prop="user" style="width: 100%">
-                <Input v-model="formInline.user" placeholder="Username"></Input>
-              </Form-item>
-              <Form-item prop="password" style="width: 100%">
-                <Input type="password" v-model="formInline.password" placeholder="Password"></Input>
-              </Form-item>
-              <Form-item style="width: 100%">
-                <Button type="primary" @click="authdata()" style="width: 100%" size="large">登录</Button>
-                <p style="margin-left: 5%;margin-top: 5%">Power By DBA 使用chrome获得最佳体验</p>
-              </Form-item>
-            </Form>
-          </TabPane>
           <!--自己添加-->
           <!--自己添加-->
           <Modal
