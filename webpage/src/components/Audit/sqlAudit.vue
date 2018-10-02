@@ -102,13 +102,13 @@
           </Select>
         </FormItem>
       </Form>
-      <template v-if="auth === 'admin' && auth === 'perform'">
+      <template>
         <p class="pa">SQL检查结果:</p>
         <Table :columns="columnsName" :data="dataId" stripe border width="860" height="200"></Table>
       </template>
 
       <div slot="footer">
-        <Button type="warning" @click.native="test_button()" v-if="auth === 'admin' && auth === 'perform'">检测sql</Button>
+        <Button type="warning" @click.native="test_button()">检测sql</Button>
         <Button @click="modal2 = false">取消</Button>
         <template v-if="switch_show">
           <template v-if="multi">
