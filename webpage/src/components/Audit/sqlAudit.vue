@@ -78,7 +78,7 @@
         <FormItem label="工单编号:">
           <span>{{ formitem.work_id }}</span>
         </FormItem>
-        <FormItem label="机房:">
+        <FormItem label="环境:">
           <span>{{ formitem.computer_room }}</span>
         </FormItem>
         <FormItem label="连接名称:">
@@ -505,7 +505,7 @@
       },
       agreed_button () {
         if (this.multi_name === '') {
-          this.$Message.error('请选择执行人!')
+          this.$Message.error('请选择DBA!')
         } else {
           axios.put(`${util.url}/audit_sql`, {
             'type': 2,

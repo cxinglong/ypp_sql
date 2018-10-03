@@ -104,7 +104,7 @@ class send_email(object):
                    '<br><p>工单号: %s</p>' \
                    '<br><p>发起人: %s</p>' \
                    '<br><p>地址: <a href="%s">%s</a></p>' \
-                   '<br><p>状态: 提交至执行人</p>' \
+                   '<br><p>状态: 提交至DBA</p>' \
                    '</body></html>' % (
                        mail_data['workid'],
                        mail_data['to_user'],

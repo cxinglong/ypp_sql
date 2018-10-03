@@ -12,7 +12,7 @@
         </p>
         <div class="edittable-testauto-con">
           <Form ref="formValidate" :model="formItem" :label-width="100" :rules="ruleInline">
-            <Form-item label="机房:">
+            <Form-item label="环境:">
               <Select v-model="formItem.add" placeholder="请选择">
                 <Option v-for="list in dataset" :value="list" :key="list">{{ list }}</Option>
               </Select>
@@ -131,7 +131,7 @@
     <Modal v-model="baseinfo" :width="500" okText="保存" @on-ok="update_base">
       <h3 slot="header" style="color:#2D8CF0">数据库连接信息</h3>
       <Form :label-width="100" label-position="right">
-        <FormItem label="机房">
+        <FormItem label="环境">
           <Input v-model="editbaseinfo.computer_room" readonly></Input>
         </FormItem>
         <FormItem label="连接名称:">
@@ -177,7 +177,7 @@
             key: 'ip'
           },
           {
-            title: '机房',
+            title: '环境',
             key: 'computer_room'
           },
           {

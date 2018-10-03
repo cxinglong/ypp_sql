@@ -30,7 +30,7 @@
             <FormItem label="角色" prop="group">
               <Select v-model="userinfo.group" placeholder="请选择">
                 <Option value="admin">管理员</Option>
-                <Option value="perform" v-if="connectionList.multi">执行人</Option>
+                <Option value="perform" v-if="connectionList.multi">DBA</Option>
                 <Option value="guest">使用人</Option>
               </Select>
             </FormItem>
@@ -91,7 +91,7 @@
         <FormItem label="角色">
           <Select v-model="editAuthForm.group" placeholder="请选择">
             <Option value="admin">管理员</Option>
-            <Option value="perform" v-if="connectionList.multi && this.userid !== 1">执行人</Option>
+            <Option value="perform" v-if="connectionList.multi && this.userid !== 1">DBA</Option>
             <Option value="guest" v-if="this.userid !== 1">使用者</Option>
           </Select>
         </FormItem>

@@ -32,7 +32,7 @@
     data () {
       return {
         stepData: {
-          title: 'Yearning SQL查询系统',
+          title: '比心数据库自动化平台',
           describe: `欢迎你！ ${sessionStorage.getItem('user')}`,
           content: '你的工单已提交审核，请等待管理员批准！'
         },

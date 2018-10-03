@@ -142,8 +142,8 @@ class audit(baseview.SuperUserpermissions):
                     threading.Thread(target=push_message, args=(
                         {'to_user': username, 'workid': work_id, 'addr': addr_ip}, 9, request.user, mail.email,
                         work_id,
-                        '已提交执行人')).start()
-                    return Response('工单已提交执行人！')
+                        '已提交DBA')).start()
+                    return Response('工单已提交DBA！')
 
             elif category == 'test':
                 try:

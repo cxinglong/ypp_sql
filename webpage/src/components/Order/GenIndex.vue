@@ -20,7 +20,7 @@
           </p>
           <div class="edittable-test-con">
             <Form :model="formItem" :label-width="100" ref="formItem" :rules="ruleValidate">
-              <Form-item label="机房:" prop="computer_room">
+              <Form-item label="环境:" prop="computer_room">
                 <Select v-model="formItem.computer_room" placeholder="请选择" @on-change="Connection_Name">
                   <Option v-for="i in dataset" :value="i" :key="i">{{ i }}</Option>
                 </Select>
@@ -89,7 +89,7 @@
         <br>
         <Card>
           <div class="step-header-con">
-            <h3>Yearning SQL平台审核工单</h3>
+            <h3>比心数据库自动化平台</h3>
             <Divider />
           </div>
           <p class="step-content"></p>
@@ -153,7 +153,7 @@
         ruleValidate: {
           computer_room: [{
             required: true,
-            message: '机房地址不得为空',
+            message: '环境地址不得为空',
             trigger: 'change'
           }],
           connection_name: [{

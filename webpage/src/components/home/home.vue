@@ -97,7 +97,7 @@
                 公告栏
               </p>
               <div class="data-sourcefunc-row">
-                <H2>欢迎使用Yearning SQL 审核平台</H2>
+                <H2>比心数据库自动化平台</H2>
                 <br>
                 <div class="fuc">
                   <H3>主要功能:</H3>

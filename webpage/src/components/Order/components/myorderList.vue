@@ -41,14 +41,14 @@
       <Row>
         <Card>
           <div class="step-header-con">
-            <h3>Yearning SQL平台审核工单</h3>
+            <h3>比心数据库自动化平台</h3>
           </div>
           <p class="step-content"></p>
           <Form class="step-form" :label-width="100">
             <FormItem label="用户名:">
               <p>{{formItem.username}}</p>
             </FormItem>
-            <FormItem label="机房:">
+            <FormItem label="环境:">
               <p>{{formItem.computer_room}}</p>
             </FormItem>
             <FormItem label="连接名:">

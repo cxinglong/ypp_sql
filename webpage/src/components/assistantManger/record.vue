@@ -49,7 +49,7 @@
             key: 'username'
           },
           {
-            title: '执行人',
+            title: 'DBA',
             key: 'assigned'
           },
           {

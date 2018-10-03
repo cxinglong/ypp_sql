@@ -148,13 +148,13 @@
                   <FormItem label="查询最大Limit限制:">
                     <Input placeholder="查询最大的Limit数。" v-model="other.limit"></Input>
                   </FormItem>
-                  <FormItem label="自定义机房:">
+                  <FormItem label="自定义环境:">
                     <Tag v-for="item in other.con_room" :key="item" :name="item" type="border" closable color="blue"
                          @on-close="handleClose2">{{ item }}
                     </Tag>
                     <br>
-                    <Input placeholder="机房名称" v-model="other.foce" style="width: 30%"></Input>
-                    <Button icon="ios-plus-empty" type="dashed" size="small" @click="handleAdd">添加机房</Button>
+                    <Input placeholder="环境名称" v-model="other.foce" style="width: 30%"></Input>
+                    <Button icon="ios-plus-empty" type="dashed" size="small" @click="handleAdd">添加环境</Button>
                   </FormItem>
                   <FormItem label="排除数据库:">
                     <Tag v-for="v in other.exclued_db_list" :key="v" :name="v" type="border" closable color="blue"
@@ -206,7 +206,7 @@
                   <br>
                   4.设置最大Limit数后，所有的查询语句的查询结果都不会超过这个数值。
                   <br>
-                  5.开启多级审核开关后,用户组将新增执行人角色，只有执行人角色的用户才能最终执行工单。关闭后执行人角色用户将全部更改为使用者
+                  5.开启多级审核开关后,用户组将新增DBA角色，只有DBA角色的用户才能最终执行工单。关闭后DBA角色用户将全部更改为使用者
                   <br>
                   6.查询审核开关开启后，所有的查询都必须通过管理员同意才能进行。关闭则可自主查询
                   <br>
