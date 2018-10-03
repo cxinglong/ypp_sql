@@ -27,7 +27,7 @@
             </RadioGroup>
           </FormItem>
           <template v-if="permission.ddl === '1'">
-            <FormItem label="连接名:">
+            <FormItem label="业务信息:">
               <div style="border-bottom: 1px solid #e9e9e9;padding-bottom:6px;margin-bottom:6px;">
                 <Checkbox
                   :indeterminate="indeterminate.ddl"
@@ -51,7 +51,7 @@
             </RadioGroup>
           </FormItem>
           <template v-if="permission.dml === '1'">
-            <FormItem label="连接名:">
+            <FormItem label="业务信息:">
               <div style="border-bottom: 1px solid #e9e9e9;padding-bottom:6px;margin-bottom:6px;">
                 <Checkbox
                   :indeterminate="indeterminate.dml"
@@ -75,7 +75,7 @@
             </RadioGroup>
           </FormItem>
           <template v-if="permission.query === '1'">
-            <FormItem label="连接名:">
+            <FormItem label="业务信息:">
               <div style="border-bottom: 1px solid #e9e9e9;padding-bottom:6px;margin-bottom:6px;">
                 <Checkbox
                   :indeterminate="indeterminate.query"
@@ -126,7 +126,7 @@
                 <Radio label="0">否</Radio>
               </RadioGroup>
             </FormItem>
-            <FormItem label="连接名:">
+            <FormItem label="业务信息:">
               <div style="border-bottom: 1px solid #e9e9e9;padding-bottom:6px;margin-bottom:6px;">
                 <Checkbox
                   :indeterminate="indeterminate.dic"

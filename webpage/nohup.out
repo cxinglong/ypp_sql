@@ -1,0 +1,24 @@
+[2018-10-03 17:00:31 +0800] [22254] [INFO] Starting gunicorn 19.8.1
+[2018-10-03 17:00:31 +0800] [22254] [INFO] Listening at: http://0.0.0.0:8000 (22254)
+[2018-10-03 17:00:31 +0800] [22254] [INFO] Using worker: sync
+[2018-10-03 17:00:31 +0800] [22258] [INFO] Booting worker with pid: 22258
+[2018-10-03 17:00:31 +0800] [22258] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/gunicorn/arbiter.py", line 583, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 129, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.6/site-packages/gunicorn/workers/base.py", line 138, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.6/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 52, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.6/site-packages/gunicorn/app/wsgiapp.py", line 41, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.6/site-packages/gunicorn/util.py", line 350, in import_app
+    __import__(module)
+ModuleNotFoundError: No module named 'settingConf'
+[2018-10-03 17:00:31 +0800] [22258] [INFO] Worker exiting (pid: 22258)
+[2018-10-03 17:00:31 +0800] [22254] [INFO] Shutting down: Master
+[2018-10-03 17:00:31 +0800] [22254] [INFO] Reason: Worker failed to boot.

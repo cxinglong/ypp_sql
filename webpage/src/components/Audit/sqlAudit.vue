@@ -81,7 +81,7 @@
         <FormItem label="环境:">
           <span>{{ formitem.computer_room }}</span>
         </FormItem>
-        <FormItem label="连接名称:">
+        <FormItem label="业务信息:">
           <span>{{ formitem.connection_name }}</span>
         </FormItem>
         <FormItem label="数据库库名:">

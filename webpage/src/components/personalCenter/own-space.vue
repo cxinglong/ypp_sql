@@ -33,21 +33,21 @@
             <FormItem label="DDL是否可见:">
               <p>{{formItem.ddl}}</p>
             </FormItem>
-            <FormItem label="可访问的连接名:" v-if="formItem.ddl === '是'">
+            <FormItem label="可访问的业务库:" v-if="formItem.ddl === '是'">
               <Tag color="blue" v-for="i in formItem.ddlcon" :key="i">{{i}}</Tag>
             </FormItem>
             <Divider orientation="left">DML权限</Divider>
             <FormItem label="DML是否可见:">
               <p>{{formItem.dml}}</p>
             </FormItem>
-            <FormItem label="可访问的连接名:" v-if="formItem.dml === '是'">
+            <FormItem label="可访问的业务库:" v-if="formItem.dml === '是'">
               <Tag color="blue" v-for="i in formItem.dmlcon" :key="i">{{i}}</Tag>
             </FormItem>
             <Divider orientation="left">查询权限</Divider>
             <FormItem label="查询是否可见:">
               <p>{{formItem.query}}</p>
             </FormItem>
-            <FormItem label="可访问的连接名:" v-if="formItem.query === '是'">
+            <FormItem label="可访问的业务库:" v-if="formItem.query === '是'">
               <Tag color="blue" v-for="i in formItem.querycon" :key="i">{{i}}</Tag>
             </FormItem>
             <Divider orientation="left">字典权限</Divider>
@@ -57,7 +57,7 @@
             <FormItem label="上级审核人:">
               <Tag color="blue" v-for="i in formItem.person" :key="i">{{i}}</Tag>
             </FormItem>
-            <FormItem label="可访问的连接名:" v-if="formItem.dic === '是'">
+            <FormItem label="可访问的业务库:" v-if="formItem.dic === '是'">
               <Tag color="blue" v-for="i in formItem.diccon" :key="i">{{i}}</Tag>
             </FormItem>
             <FormItem label="字典修改权限:">
@@ -127,21 +127,21 @@
               <FormItem label="DDL是否可见:">
                 <p>{{permission.ddl}}</p>
               </FormItem>
-              <FormItem label="可访问的连接名:" v-if="permission.ddl === '是'">
+              <FormItem label="可访问的业务库:" v-if="permission.ddl === '是'">
                 <Tag color="blue" v-for="i in permission.ddlcon" :key="i">{{i}}</Tag>
               </FormItem>
               <Divider orientation="left">DML权限</Divider>
               <FormItem label="DML是否可见:">
                 <p>{{permission.dml}}</p>
               </FormItem>
-              <FormItem label="可访问的连接名:" v-if="permission.dml === '是'">
+              <FormItem label="可访问的业务库:" v-if="permission.dml === '是'">
                 <Tag color="blue" v-for="i in permission.dmlcon" :key="i">{{i}}</Tag>
               </FormItem>
               <Divider orientation="left">查询权限</Divider>
               <FormItem label="查询是否可见:">
                 <p>{{permission.query}}</p>
               </FormItem>
-              <FormItem label="可访问的连接名:" v-if="permission.query === '是'">
+              <FormItem label="可访问的业务库:" v-if="permission.query === '是'">
                 <Tag color="blue" v-for="i in permission.querycon" :key="i">{{i}}</Tag>
               </FormItem>
               <Divider orientation="left">字典权限</Divider>
@@ -151,7 +151,7 @@
               <FormItem label="上级审核人:">
                 <Tag color="blue" v-for="i in permission.person" :key="i">{{i}}</Tag>
               </FormItem>
-              <FormItem label="可访问的连接名:" v-if="permission.dic === '是'">
+              <FormItem label="可访问的业务库:" v-if="permission.dic === '是'">
                 <Tag color="blue" v-for="i in permission.diccon" :key="i">{{i}}</Tag>
               </FormItem>
               <FormItem label="字典修改权限:">

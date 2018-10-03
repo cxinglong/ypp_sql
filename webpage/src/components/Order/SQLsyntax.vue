@@ -22,7 +22,7 @@
                   </Select>
                 </FormItem>
 
-                <FormItem label="连接名:" prop="connection_name">
+                <FormItem label="业务信息:" prop="connection_name">
                   <Select v-model="formItem.connection_name" @on-change="DataBaseName" filterable>
                     <Option v-for="i in datalist.connection_name_list" :value="i.connection_name"
                             :key="i.connection_name">{{ i.connection_name }}
@@ -178,7 +178,7 @@
           }],
           connection_name: [{
             required: true,
-            message: '连接名不得为空',
+            message: '业务信息不得为空',
             trigger: 'change'
           }],
           basename: [{

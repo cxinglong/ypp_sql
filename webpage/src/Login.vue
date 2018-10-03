@@ -37,7 +37,7 @@
             </Form>
           </TabPane>
 
-          <TabPane label="域账户注册" name="ldap">
+          <TabPane label="首次登录前域账户认证" name="ldap">
             <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
               <Form-item prop="user" style="width: 100%">
                 <Input v-model="formInline.user" placeholder="ldap_Username"></Input>
