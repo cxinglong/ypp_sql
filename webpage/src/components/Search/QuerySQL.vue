@@ -30,7 +30,7 @@
           </div>
         </Card>
       </Col>
-      <Col span="18" class="padding-left-10">
+      <Col span="21" class="padding-left-10">
         <Card>
           <p slot="title">
             <Icon type="ios-crop-strong"></Icon>
