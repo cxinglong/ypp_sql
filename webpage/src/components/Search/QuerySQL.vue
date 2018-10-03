@@ -14,7 +14,7 @@
 <template>
   <div>
     <Row>
-      <Col span="6">
+      <Col span="3">
         <Card>
           <p slot="title">
             <Icon type="ios-redo"></Icon>
