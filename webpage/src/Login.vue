@@ -47,7 +47,7 @@
                        @on-keyup.enter="authdata()"></Input>
               </Form-item>
               <Form-item style="width: 100%">
-                <Button type="primary" @click="ldap_login()" style="width: 100%" size="large">登录</Button>
+                <Button type="primary" @click="ldap_login()" style="width: 100%" size="large">登录认证</Button>
                 <p style="margin-left: 5%;margin-top: 5%">Power By DBA 使用chrome获得最佳体验</p>
               </Form-item>
             </Form>

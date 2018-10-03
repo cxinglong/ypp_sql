@@ -26,9 +26,7 @@
               </Form-item>
               <Form-item label="业务信息:" prop="connection_name">
                 <Select v-model="formItem.connection_name" placeholder="请选择" @on-change="DataBaseName" filterable>
-                  <Option v-for="i in tableform.sqlname" :value="i.connection_name" :key="i.connection_name" >
-                    {{ i.connection_name }}
-                  </Option>
+                  <Option v-for="i in tableform.sqlname" :value="i.connection_name" :key="i.connection_name">{{ i.connection_name }}</Option>
                 </Select>
               </Form-item>
               <Form-item label="数据库库名:" prop="basename">
