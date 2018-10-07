@@ -347,7 +347,7 @@
         }
       },
       mountdata (vl = 1) {
-        axios.get(`${util.url}/management_db/all/?page=${vl}&permissions_type=base`)
+        axios.get(`${util.url}/management_db/all/?page=${vl}&permissions_type=dic`)
           .then(res => {
             this.rowdata = res.data.data
             this.pagenumber = parseInt(res.data.page)
