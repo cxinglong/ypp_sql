@@ -63,56 +63,12 @@
           },
           {
             title: '数据库地址',
-            key: 'ip',
-            width: 400
+            key: 'ip'
           },
           {
             title: '端口',
             key: 'port',
-            width: 50,
-            render: (h, params) => {
-              return h('div', [
-                h('Button', {
-                  props: {
-                    size: 'small',
-                    type: 'info'
-                  },
-                  on: {
-                    click: () => {
-                      this.edit_tab(params.index)
-                    }
-                  }
-                }, '查看信息'),
-                h('Button', {
-                  style: {
-                    marginLeft: '8px'
-                  },
-                  props: {
-                    type: 'success',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-                      this.dingding(params.row)
-                    }
-                  }
-                }, '钉钉推送信息'),
-                h('Button', {
-                  style: {
-                    marginLeft: '8px'
-                  },
-                  props: {
-                    type: 'warning',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-                      this.deldatabases(params.index)
-                    }
-                  }
-                }, '删除')
-              ])
-            }
+            width: 150
           }
         ],
         rowdata: [],
