@@ -30,7 +30,7 @@ a:active {
       </p>
       <div class="edittable-self-con">
         <Form :label-width="80">
-          <Form-item label="数据库连接:">
+          <Form-item label="业务信息:">
             <Select v-model="formItem.namedata" @on-change="InitializationTableInfo" filterable>
                 <Option v-for="i in TableList" :value="i" :key="i">{{ i }}</Option>
               </Select>
@@ -40,7 +40,7 @@ a:active {
                 <Option v-for="item in formItem.info" :value="item" :key="item">{{ item }}</Option>
               </Select>
           </Form-item>
-          <Form-item label="搜索数据表:">
+          <Form-item label="表过滤:">
             <Select v-model="formItem.search" @on-change="OnlyTabkleInfo" filterable>
                 <Option v-for="i in Limitpage" :value="i[0].TableName" :key="i[0].TableName">{{ i[0].TableName }}</Option>
               </Select>

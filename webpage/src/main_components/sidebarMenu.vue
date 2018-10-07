@@ -26,7 +26,7 @@
     </MenuItem>
     <MenuItem name="databaselist">
       <Icon type="md-cube" :size="iconSize"></Icon>
-      <span class="layout-text">数据库列表</span>
+      <span class="layout-text">库字典</span>
     </MenuItem>
     <template v-for="item in menuList">
       <Submenu v-if="item.children.length>=1 && item.name !== 'main'" :name="item.name" :key="item.path">

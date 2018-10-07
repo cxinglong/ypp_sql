@@ -134,7 +134,7 @@ export const appRouter = [
       {
         path: 'view-dml',
         name: 'view-dml',
-        title: '数据库字典',
+        title: '表结构',
         'icon': 'ios-book',
         component: resolve => {
           require(['./components/search/databaseDic.vue'], resolve)
