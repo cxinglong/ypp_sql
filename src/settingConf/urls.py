@@ -36,6 +36,7 @@ from core.api.applygrained import (
     audit_grained,
     apply_grained
 )
+from core.api.getdic import get_dic
 from core.api.sqlorder import sqlorder
 from core.api.serachsql import search, query_worklf, Query_order
 from core.api.osc import osc_step
@@ -58,6 +59,7 @@ urlpatterns = [
     url(r'^api/v1/myorder', order.as_view()),
     url(r'^api/v1/gensql/(.*)', gen_sql.as_view()),
     url(r'^api/v1/management_db/(.*)', management_db.as_view()),
+    url(r'^api/v1/get_dic/(.*)', get_dic.as_view()),
     url(r'^api/v1/audit_sql', audit.as_view()),
     url(r'^api/v1/sqldic/(.*)', dictionary.as_view()),
     url(r'^api/v1/auth_twice', authgroup.as_view()),

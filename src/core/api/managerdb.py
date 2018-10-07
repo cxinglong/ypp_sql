@@ -20,8 +20,8 @@ from core.models import (
 CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
 
 
-#class management_db(baseview.SuperUserpermissions):
-class management_db():
+class management_db(baseview.SuperUserpermissions):
+
     '''
 
     :argument 数据库管理页面api 接口
