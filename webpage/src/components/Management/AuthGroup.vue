@@ -129,13 +129,15 @@
             <FormItem label="业务信息:">
               <div style="border-bottom: 1px solid #e9e9e9;padding-bottom:6px;margin-bottom:6px;">
                 <Checkbox
-                  :indeterminate="indeterminate.query"
+                  :indeterminate="indeterminate.dic"
                   :value="checkAll.dic"
                   @click.prevent.native="ddlCheckAll('diccon', 'dic', 'dic')">全选
                 </Checkbox>
               </div>
               <CheckboxGroup v-model="permission.diccon">
-                <Checkbox v-for="i in connectionList.dic" :label="i.Name" :key="i.Name">{{i.Name}}</Checkbox>
+                <Checkbox v-for="i in connectionList.connection" :label="i.connection_name" :key="i.connection_name">
+                  {{i.connection_name}}
+                </Checkbox>
               </CheckboxGroup>
             </FormItem>
           </template>

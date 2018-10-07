@@ -18,8 +18,7 @@
             <div>
               <Form :model="dictionary" :label-width="320" ref="generation">
                 <FormItem label="库字典查询:" prop="dic">
-                  <Select v-model="dictionary.name" placeholder="请选择业务信息" style="width: 25%" @on-change="BaseList"
-                          transfer>
+                  <Select v-model="dictionary.name" placeholder="请选择业务信息" style="width: 25%" @on-change="BaseList">
                     <Option v-for="i in rowdata" :value="i.id" :key="i.connection_name">{{i.connection_name}}</Option>
                   </Select>
                 </FormItem>
