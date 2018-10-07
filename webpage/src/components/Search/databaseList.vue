@@ -4,40 +4,20 @@
 </style>
 <template>
   <div>
-    <Col span="6">
+    <Col span="24">
       <Card>
         <p slot="title">
-          <Icon type="md-refresh" />
-          添加数据库
+          <Icon type="md-apps" />
+          数据库详情表
         </p>
-        <div class="edittable-testauto-con">
-          <Form ref="formValidate" :model="formItem" :label-width="100" :rules="ruleInline">
-            <Form-item label="环境:">
-              <Select v-model="formItem.add" placeholder="请选择">
-                <Option v-for="list in dataset" :value="list" :key="list">{{ list }}</Option>
-              </Select>
-            </Form-item>
-            <Form-item label="业务信息:" prop="name">
-              <Input v-model="formItem.name" placeholder="请输入"></Input>
-            </Form-item>
-            <Form-item label="数据库地址:" prop="ip">
-              <Input v-model="formItem.ip" placeholder="请输入"></Input>
-            </Form-item>
-            <Form-item label="端口:" prop="port">
-              <Input v-model="formItem.port" placeholder="请输入"></Input>
-            </Form-item>
-            <Form-item label="用户名:" prop="username">
-              <Input v-model="formItem.username" placeholder="请输入"></Input>
-            </Form-item>
-            <Form-item label="密码:" prop="password">
-              <Input v-model="formItem.password" placeholder="请输入" type="password"></Input>
-            </Form-item>
-            <Button type="info" @click="testlink()">测试连接</Button>
-            <Button type="success" @click="add()" style="margin-left: 5%">确定</Button>
-            <Button type="warning" @click="del()" style="margin-left: 5%">取消</Button>
-          </Form>
+        <div class="edittable-con-1">
+          <Table :columns="columns" :data="rowdata" height="550"></Table>
         </div>
+        <br>
+        <Page :total="pagenumber" show-elevator @on-change="mountdata" :page-size="50" ref="totol"></Page>
       </Card>
+    </Col>
+    <Col span="6">
       <Card>
         <Tabs value="name1">
           <TabPane label="字典生成" icon="load-b" name="name1">
@@ -49,7 +29,7 @@
                     <Option v-for="i in rowdata" :value="i.id" :key="i.connection_name">{{i.connection_name}}</Option>
                   </Select>
                 </FormItem>
-                <FormItem label="数据库名称:">
+                <FormItem label="数据库名:">
                   <Checkbox :indeterminate="dictionary.indeterminate" :value="dictionary.checkAll"
                             @click.prevent.native="dicCheckAll">全选
                   </Checkbox>
@@ -57,101 +37,12 @@
                     <Checkbox :label="c" :key="c" v-for="c in dictionary.databasesList"></Checkbox>
                   </CheckboxGroup>
                 </FormItem>
-                <Button @click.native="Commit" type="info">生成数据字典</Button>
               </Form>
             </div>
-          </TabPane>
-          <!-- 数据库字典model-->
-          <TabPane label="字典删除" name="name2">
-            <Form :model="dictionary" :label-width="80">
-              <FormItem label="业务信息:">
-                <Select v-model="dictionary.delname" placeholder="请选择业务信息" style="width: 60%" @on-change="getdiclist"
-                        transfer>
-                  <Option v-for="i in diclist" :value="i.Name" :key="i.Name">{{i.Name}}</Option>
-                </Select>
-              </FormItem>
-              <FormItem label="数据库名称:">
-                <CheckboxGroup v-model="dictionary.getdel">
-                  <Checkbox :label="c.BaseName" :key="c.BaseName" v-for="c in dictionary.getdellist"></Checkbox>
-                </CheckboxGroup>
-              </FormItem>
-              <Button @click.native="Deletedic" type="warning">删除数据字典</Button>
-            </Form>
           </TabPane>
         </Tabs>
       </Card>
     </Col>
-    <Col span="18" class="padding-left-10">
-      <Card>
-        <p slot="title">
-          <Icon type="md-apps" />
-          数据库详情表
-        </p>
-        <div class="edittable-con-1">
-          <Table :columns="columns" :data="rowdata" height="550"></Table>
-        </div>
-        <br>
-        <Page :total="pagenumber" show-elevator @on-change="mountdata" :page-size="10" ref="totol"></Page>
-      </Card>
-    </Col>
-    <Modal v-model="delbaseModal" :width="500">
-      <h3 slot="header" style="color:#2D8CF0">删除数据库</h3>
-      <Form :label-width="100" label-position="right">
-        <FormItem label="业务信息">
-          <Input v-model="delbasename" readonly="readonly"></Input>
-        </FormItem>
-        <FormItem label="请输入业务信息">
-          <Input v-model="delconfirmbasename" placeholder="请确认业务信息"></Input>
-        </FormItem>
-      </Form>
-      <div slot="footer">
-        <Button type="text" @click="delbaseModal = false">取消</Button>
-        <Button type="primary" @click="delbaselink">删除</Button>
-      </div>
-    </Modal>
-    <Modal v-model="addDingding" :width="500">
-      <h3 slot="header" style="color:#2D8CF0">添加钉钉推送接口</h3>
-      <Form :label-width="100" label-position="right">
-        <FormItem label="业务信息">
-          <Input v-model="dingname" readonly="readonly"></Input>
-        </FormItem>
-        <FormItem label="提交工单推送的消息内容:">
-          <Input v-model="dingdingbeforetext" type="textarea" :autosize="{minRows: 2,maxRows: 5}"></Input>
-        </FormItem>
-        <FormItem label="审核成功后推送的消息内容:">
-          <Input v-model="dingdingaftertext" type="textarea" :autosize="{minRows: 2,maxRows: 5}"></Input>
-        </FormItem>
-      </Form>
-      <div slot="footer">
-        <Button type="text" @click="addDingding = false">取消</Button>
-        <Button type="primary" @click="savedingding()">添加</Button>
-      </div>
-    </Modal>
-
-    <Modal v-model="baseinfo" :width="500" okText="保存" @on-ok="update_base">
-      <h3 slot="header" style="color:#2D8CF0">数据库连接信息</h3>
-      <Form :label-width="100" label-position="right">
-        <FormItem label="环境">
-          <Input v-model="editbaseinfo.computer_room"></Input>
-        </FormItem>
-        <FormItem label="业务信息:">
-          <Input v-model="editbaseinfo.connection_name"></Input>
-        </FormItem>
-        <FormItem label="数据库地址:">
-          <Input v-model="editbaseinfo.ip"></Input>
-        </FormItem>
-        <FormItem label="端口:">
-          <Input v-model="editbaseinfo.port"></Input>
-        </FormItem>
-        <FormItem label="用户名:">
-          <Input v-model="editbaseinfo.username"></Input>
-        </FormItem>
-        <FormItem label="密码:">
-          <Input v-model="editbaseinfo.password" type="password"></Input>
-        </FormItem>
-      </Form>
-    </Modal>
-
   </div>
 </template>
 <script>
@@ -179,54 +70,6 @@
           {
             title: '环境',
             key: 'computer_room'
-          },
-          {
-            title: '操作',
-            key: 'action',
-            width: 300,
-            render: (h, params) => {
-              return h('div', [
-                h('Button', {
-                  props: {
-                    size: 'small',
-                    type: 'info'
-                  },
-                  on: {
-                    click: () => {
-                      this.edit_tab(params.index)
-                    }
-                  }
-                }, '查看信息'),
-                h('Button', {
-                  style: {
-                    marginLeft: '8px'
-                  },
-                  props: {
-                    type: 'success',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-                      this.dingding(params.row)
-                    }
-                  }
-                }, '钉钉推送信息'),
-                h('Button', {
-                  style: {
-                    marginLeft: '8px'
-                  },
-                  props: {
-                    type: 'warning',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-                      this.deldatabases(params.index)
-                    }
-                  }
-                }, '删除')
-              ])
-            }
           }
         ],
         rowdata: [],
