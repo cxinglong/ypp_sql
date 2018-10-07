@@ -15,9 +15,6 @@
     </Col>
     <Col span="24">
       <Card>
-        <Tabs value="name1">
-          <TabPane label="选择数据库" icon="load-b" name="name1">
-            <!-- <div class="edittable-testauto-con"> -->
             <div>
               <Form :model="dictionary" :label-width="320" ref="generation">
                 <FormItem label="业务信息:" prop="dic">
@@ -33,8 +30,6 @@
                 </FormItem>
               </Form>
             </div>
-          </TabPane>
-        </Tabs>
       </Card>
     </Col>
   </div>
