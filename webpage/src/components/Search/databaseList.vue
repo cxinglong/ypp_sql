@@ -153,6 +153,21 @@
           .catch(error => {
             util.err_notice(error)
           })
-      }
+      },
+      mountdata (vl = 1) {
+        axios.get(`${util.url}/management_db/all/?page=${vl}&permissions_type=base`)
+          .then(res => {
+            this.rowdata = res.data.data
+            this.pagenumber = parseInt(res.data.page)
+            this.diclist = res.data.diclist
+            this.dataset = res.data['custom']
+          })
+          .catch(error => {
+            util.err_notice(error)
+          })
+      },
+      mounted () {
+      this.mountdata()
+    }
   }
 </script>
