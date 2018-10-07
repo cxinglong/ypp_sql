@@ -24,6 +24,10 @@
       <Icon type="md-person" :size="iconSize"></Icon>
       <span class="layout-text">我的工单</span>
     </MenuItem>
+    <MenuItem name="databaselist">
+      <Icon type="md-database" :size="iconSize"></Icon>
+      <span class="layout-text">数据库列表</span>
+    </MenuItem>
     <template v-for="item in menuList">
       <Submenu v-if="item.children.length>=1 && item.name !== 'main'" :name="item.name" :key="item.path">
         <template slot="title">
