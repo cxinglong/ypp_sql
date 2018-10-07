@@ -25,7 +25,7 @@
       <span class="layout-text">我的工单</span>
     </MenuItem>
     <MenuItem name="databaselist">
-      <Icon type="md-database" :size="iconSize"></Icon>
+      <Icon type="md-cube" :size="iconSize"></Icon>
       <span class="layout-text">数据库列表</span>
     </MenuItem>
     <template v-for="item in menuList">
