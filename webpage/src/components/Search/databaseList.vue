@@ -14,17 +14,17 @@
           <Table :columns="columns" :data="rowdata" height="550"></Table>
         </div>
         <br>
-        <Page :total="pagenumber" show-elevator @on-change="mountdata" :page-size="50" ref="totol"></Page>
+        <Page :total="pagenumber" show-elevator @on-change="mountdata" :page-size="10" ref="totol"></Page>
       </Card>
     </Col>
-    <Col span="6">
+    <Col span="24">
       <Card>
         <Tabs value="name1">
-          <TabPane label="字典生成" icon="load-b" name="name1">
+          <TabPane label="数据库字段" icon="load-b" name="name1">
             <div class="edittable-testauto-con">
-              <Form :model="dictionary" :label-width="80" ref="generation">
+              <Form :model="dictionary" :label-width="320" ref="generation">
                 <FormItem label="业务信息:" prop="dic">
-                  <Select v-model="dictionary.name" placeholder="请选择业务信息" style="width: 60%" @on-change="BaseList"
+                  <Select v-model="dictionary.name" placeholder="请选择业务信息" style="width: 100%" @on-change="BaseList"
                           transfer>
                     <Option v-for="i in rowdata" :value="i.id" :key="i.connection_name">{{i.connection_name}}</Option>
                   </Select>
