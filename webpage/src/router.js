@@ -359,6 +359,27 @@ export const myorder = {
     }
   ]
 }
+
+export const databaselist = {
+  path: '/',
+  icon: 'home',
+  name: 'main',
+  title: '首页',
+  component: Index,
+  redirect: '/home',
+  children: [
+     {
+      path: 'databaselist',
+      name: 'databaselist',
+      title: '数据库列表',
+      'icon': 'database',
+      component: resolve => {
+        require(['./components/search/databaseList.vue'], resolve)
+      }
+    }
+  ]
+}
+
 export const MainRoute = [
   loginRouter,
   locking,
@@ -369,6 +390,7 @@ export const MainRoute = [
   querypage,
   version,
   myorder,
+  databaselist,
   page404,
   page401,
   page500

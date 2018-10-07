@@ -132,10 +132,10 @@
       <h3 slot="header" style="color:#2D8CF0">数据库连接信息</h3>
       <Form :label-width="100" label-position="right">
         <FormItem label="环境">
-          <Input v-model="editbaseinfo.computer_room" readonly></Input>
+          <Input v-model="editbaseinfo.computer_room"></Input>
         </FormItem>
         <FormItem label="业务信息:">
-          <Input v-model="editbaseinfo.connection_name" readonly></Input>
+          <Input v-model="editbaseinfo.connection_name"></Input>
         </FormItem>
         <FormItem label="数据库地址:">
           <Input v-model="editbaseinfo.ip"></Input>
