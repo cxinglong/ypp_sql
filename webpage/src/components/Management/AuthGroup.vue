@@ -129,7 +129,7 @@
             <FormItem label="业务信息:">
               <div style="border-bottom: 1px solid #e9e9e9;padding-bottom:6px;margin-bottom:6px;">
                 <Checkbox
-                  :indeterminate="indeterminate.dic"
+                  :indeterminate="indeterminate.query"
                   :value="checkAll.dic"
                   @click.prevent.native="ddlCheckAll('diccon', 'dic', 'dic')">全选
                 </Checkbox>

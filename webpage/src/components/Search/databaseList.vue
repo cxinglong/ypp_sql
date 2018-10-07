@@ -17,13 +17,13 @@
       <Card>
             <div>
               <Form :model="dictionary" :label-width="320" ref="generation">
-                <FormItem label="业务信息:" prop="dic">
+                <FormItem label="库字典查询:" prop="dic">
                   <Select v-model="dictionary.name" placeholder="请选择业务信息" style="width: 25%" @on-change="BaseList"
                           transfer>
                     <Option v-for="i in rowdata" :value="i.id" :key="i.connection_name">{{i.connection_name}}</Option>
                   </Select>
                 </FormItem>
-                <FormItem label="存在的数据库:">
+                <FormItem label="数据库信息:">
                   <CheckboxGroup v-model="dictionary.databases">
                     <Checkbox :label="c" :key="c" v-for="c in dictionary.databasesList"></Checkbox>
                   </CheckboxGroup>
