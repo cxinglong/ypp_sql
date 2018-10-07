@@ -16,8 +16,9 @@
     <Col span="24">
       <Card>
         <Tabs value="name1">
-          <TabPane label="库字典查询" icon="load-b" name="name1">
-            <div class="edittable-testauto-con">
+          <TabPane label="选择数据库" icon="load-b" name="name1">
+            <!-- <div class="edittable-testauto-con"> -->
+            <div>
               <Form :model="dictionary" :label-width="320" ref="generation">
                 <FormItem label="业务信息:" prop="dic">
                   <Select v-model="dictionary.name" placeholder="请选择业务信息" style="width: 25%" @on-change="BaseList"
