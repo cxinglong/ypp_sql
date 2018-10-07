@@ -20,19 +20,16 @@
     <Col span="24">
       <Card>
         <Tabs value="name1">
-          <TabPane label="数据库字段" icon="load-b" name="name1">
+          <TabPane label="库字典查询" icon="load-b" name="name1">
             <div class="edittable-testauto-con">
               <Form :model="dictionary" :label-width="320" ref="generation">
                 <FormItem label="业务信息:" prop="dic">
-                  <Select v-model="dictionary.name" placeholder="请选择业务信息" style="width: 100%" @on-change="BaseList"
+                  <Select v-model="dictionary.name" placeholder="请选择业务信息" style="width: 15%" @on-change="BaseList"
                           transfer>
                     <Option v-for="i in rowdata" :value="i.id" :key="i.connection_name">{{i.connection_name}}</Option>
                   </Select>
                 </FormItem>
                 <FormItem label="数据库名:">
-                  <Checkbox :indeterminate="dictionary.indeterminate" :value="dictionary.checkAll"
-                            @click.prevent.native="dicCheckAll">全选
-                  </Checkbox>
                   <CheckboxGroup v-model="dictionary.databases">
                     <Checkbox :label="c" :key="c" v-for="c in dictionary.databasesList"></Checkbox>
                   </CheckboxGroup>
@@ -64,12 +61,16 @@
             key: 'connection_name'
           },
           {
+            title: '环境',
+            key: 'computer_room'
+          },
+          {
             title: '数据库地址',
             key: 'ip'
           },
           {
-            title: '环境',
-            key: 'computer_room'
+            title: '端口',
+            key: 'port'
           }
         ],
         rowdata: [],
