@@ -131,7 +131,7 @@
                 <Checkbox
                   :indeterminate="indeterminate.dic"
                   :value="checkAll.dic"
-                  @click.prevent.native="ddlCheckAll('diccon', 'dic', 'dic')">全选
+                  @click.prevent.native="ddlCheckAll('diccon', 'dic', 'connection')">全选
                 </Checkbox>
               </div>
               <CheckboxGroup v-model="permission.diccon">
