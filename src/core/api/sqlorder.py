@@ -107,7 +107,7 @@ class sqlorder(baseview.BaseView):
                     assigned=data['assigned'],
                     id=id
                 ).start()
-                return Response('已提交，请等待管理员审核!')
+                return Response('已提交，请等待Leader审核!')
             except Exception as e:
                 CUSTOM_ERROR.error(f'{e.__class__.__name__}: {e}')
                 return HttpResponse(status=500)

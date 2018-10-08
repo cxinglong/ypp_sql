@@ -69,7 +69,7 @@
       </Card>
     </Row>
 
-    <Modal v-model="modal2" width="1000">
+    <Modal v-model="modal2" width="1000" show-ok="false">
       <p slot="header" style="color:#f60;font-size: 16px">
         <Icon type="information-circled"></Icon>
         <span>SQL工单详细信息</span>
@@ -170,7 +170,7 @@
     </Modal>
 
 
-    <Modal v-model="confirm" @on-ok="put_button" >
+    <Modal v-model="confirm" show-ok="false" >
       <p slot="header" style="color:#f60;font-size: 16px">
         <Icon type="information-circled"></Icon>
         <span>您确定执行操作吗？</span>
@@ -182,6 +182,12 @@
         <FormItem label="数据库:">
           <p>{{ formitem.basename }}</p>
         </FormItem>
+        <FormItem label="是否备份:">
+          {{ formitem.backup }}
+        </FormItem>
+        <div>
+          <Button type="success" @click="put_button()">确认执行</Button>
+        </div>
         <FormItem>
             <Table :columns="sql_columns" :data="sql"></Table>
         </FormItem>
