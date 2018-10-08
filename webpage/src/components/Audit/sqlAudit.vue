@@ -432,7 +432,7 @@
           {
             title: 'ID',
             key: 'ID',
-            width: 50,
+            width: 110,
             fixed: 'left'
           },
           {
@@ -443,7 +443,7 @@
           {
             title: '当前检查的sql',
             key: 'sql',
-            width: 560
+            width: 500
           },
           {
             title: '错误信息',
@@ -453,12 +453,12 @@
           {
             title: '影响行数',
             key: 'affected_rows',
-            width: 90
+            width: 110
           },
           {
             title: 'SQLSHA1',
             key: 'SQLSHA1',
-            width: 200
+            width: 180
           }
         ],
         dataId: [],
