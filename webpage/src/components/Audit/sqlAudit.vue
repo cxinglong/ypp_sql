@@ -93,20 +93,12 @@
         <FormItem label="是否备份:">
           {{ formitem.backup }}
         </FormItem>
-        <FormItem>
-            <Table :columns="sql_columns" :data="sql"></Table>
-        </FormItem>
         <FormItem label="DBA:" v-if="multi && auth === 'admin'">
           <Select v-model="multi_name" style="width: 20%">
             <Option v-for="i in multi_list" :value="i.username" :key="i.username">{{i.username}}</Option>
           </Select>
         </FormItem>
       </Form>
-      <template>
-        <p class="pa">SQL检查结果:</p>
-        <Table :columns="columnsName" :data="dataId" stripe border></Table>
-      </template>
-
       <div slot="footer">
         <Button type="warning" @click.native="test_button()">检测sql</Button>
         <Button @click="modal2 = false">取消</Button>
@@ -123,6 +115,12 @@
           </template>
         </template>
       </div>
+      <template>
+        <p class="pa">SQL检查结果:</p>
+        <Table :columns="columnsName" :data="dataId" stripe border></Table>
+      </template>
+
+      
     </Modal>
 
     <Modal v-model="reject.reje" @on-ok="rejecttext">
