@@ -75,9 +75,6 @@
         <span>SQL工单详细信息</span>
       </p>
       <Form label-position="right">
-        <FormItem label="工单编号:">
-          <span>{{ formitem.work_id }}</span>
-        </FormItem>
         <FormItem label="环境:">
           <span>{{ formitem.computer_room }}</span>
         </FormItem>
@@ -91,10 +88,13 @@
           <span>{{ formitem.delay }}分钟</span>
         </FormItem>
         <FormItem label="工单说明:">
-          <span>{{ formitem.text }}</span>
+          {{ formitem.text }}
+        </FormItem>
+        <FormItem label="是否备份:">
+          {{ formitem.backup }}
         </FormItem>
         <FormItem>
-            <Table :columns="sql_columns" :data="sql" height="200"></Table>
+            <Table :columns="sql_columns" :data="sql"></Table>
         </FormItem>
         <FormItem label="DBA:" v-if="multi && auth === 'admin'">
           <Select v-model="multi_name" style="width: 20%">
@@ -104,7 +104,7 @@
       </Form>
       <template>
         <p class="pa">SQL检查结果:</p>
-        <Table :columns="columnsName" :data="dataId" stripe border width="860" height="200"></Table>
+        <Table :columns="columnsName" :data="dataId" stripe border></Table>
       </template>
 
       <div slot="footer">
@@ -184,11 +184,8 @@
         <FormItem label="数据库:">
           <p>{{ formitem.basename }}</p>
         </FormItem>
-        <FormItem label="SQL语句:">
-          <br>
-          <div class="tree">
-            <p v-for="i in sql">{{ i }}</p>
-          </div>
+        <FormItem>
+            <Table :columns="sql_columns" :data="sql"></Table>
         </FormItem>
       </Form>
     </Modal>
@@ -202,11 +199,8 @@
         <FormItem label="数据库:">
           <p>{{ formitem.basename }}</p>
         </FormItem>
-        <FormItem label="SQL语句:">
-          <br>
-          <div class="tree">
-            <p v-for="i in sql">{{ i }}</p>
-          </div>
+        <FormItem>
+            <Table :columns="sql_columns" :data="sql"></Table>
         </FormItem>
       </Form>
     </Modal>
@@ -438,23 +432,23 @@
           {
             title: 'ID',
             key: 'ID',
-            width: 60,
+            width: 50,
             fixed: 'left'
           },
           {
             title: '阶段状态',
             key: 'stagestatus',
-            width: 150
+            width: 130
           },
           {
             title: '当前检查的sql',
             key: 'sql',
-            width: 500
+            width: 560
           },
           {
             title: '错误信息',
             key: 'errormessage',
-            width: 300
+            width: 270
           },
           {
             title: '影响行数',

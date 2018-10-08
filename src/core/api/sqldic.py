@@ -17,7 +17,7 @@ from core.models import (
 )
 from core.task import grained_permissions,set_auth_group
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger()
 
 
 class adminpremisson(baseview.SuperUserpermissions):
@@ -41,7 +41,8 @@ class adminpremisson(baseview.SuperUserpermissions):
                 user=_connection.username,
                 password=_connection.password,
                 db=basename,
-                port=_connection.port
+                port=_connection.port,
+                connect_timeout=3600
         ) as f:
             res = f.baseItems(sql='show tables')
             for i in res:
