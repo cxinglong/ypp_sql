@@ -99,7 +99,7 @@
           </Select>
         </FormItem>
       </Form>
-      <div slot="footer">
+      <div>
         <Button type="warning" @click.native="test_button()">检测sql</Button>
         <Button @click="modal2 = false">取消</Button>
         <template v-if="switch_show">
