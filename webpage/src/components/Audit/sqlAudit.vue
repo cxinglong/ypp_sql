@@ -194,7 +194,7 @@
       </Form>
     </Modal>
 
-    <Modal v-model="osc_confirm" @on-ok="stop_osc" >
+    <Modal v-model="osc_confirm" >
       <p slot="header" style="color:#f60;font-size: 16px">
         <Icon type="information-circled"></Icon>
         <span>您确定终止操作吗？</span>
@@ -203,6 +203,9 @@
         <FormItem label="数据库:">
           <p>{{ formitem.basename }}</p>
         </FormItem>
+        <div>
+          <Button type="success" @click="stop_osc()">确认终止</Button>
+        </div>
         <FormItem>
             <Table :columns="sql_columns" :data="sql"></Table>
         </FormItem>
@@ -640,6 +643,7 @@
         this.osc_confirm = true
       },
       stop_osc () {
+        this.osc_confirm = false
         axios.delete(`${util.url}/osc/${this.oscsha1}`)
           .then(res => {
             util.notice(res.data)
