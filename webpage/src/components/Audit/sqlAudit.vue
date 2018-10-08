@@ -69,7 +69,7 @@
       </Card>
     </Row>
 
-    <Modal v-model="modal2" width="1000" show-ok="false">
+    <Modal v-model="modal2" width="1000" :show-ok="false">
       <p slot="header" style="color:#f60;font-size: 16px">
         <Icon type="information-circled"></Icon>
         <span>SQL工单详细信息</span>
@@ -170,7 +170,7 @@
     </Modal>
 
 
-    <Modal v-model="confirm" show-ok="false" >
+    <Modal v-model="confirm" :show-ok="false" >
       <p slot="header" style="color:#f60;font-size: 16px">
         <Icon type="information-circled"></Icon>
         <span>您确定执行操作吗？</span>
@@ -525,7 +525,7 @@
         this.confirm = true
       },
       put_button () {
-        this.modal2 = false
+        this.confirm = false
         this.tmp[this.togoing].status = 3
         axios.put(`${util.url}/audit_sql`, {
           'type': 1,
