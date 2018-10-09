@@ -81,6 +81,9 @@
         <FormItem label="业务信息:">
           <span>{{ formitem.connection_name }}</span>
         </FormItem>
+        <FormItem label="RDS IP:">
+          <span>{{ formitem.ip }}</span>
+        </FormItem>
         <FormItem label="数据库库名:">
           <span>{{ formitem.basename }}</span>
         </FormItem>
