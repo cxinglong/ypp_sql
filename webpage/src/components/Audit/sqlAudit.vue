@@ -74,8 +74,6 @@
         <Icon type="information-circled"></Icon>
         SQL工单详细信息
       </p>
-      <p>提示：若是DDL操作，大于512MB的表会自动走pt-online-ddl(已优化从库延时)<br />
-      小于512MB则走online-ddl(非重建表DDL需指定algorithm=inplace,lock=none)</p>
       <Form label-position="right">
         <FormItem label="环境:">
           <span>{{ formitem.computer_room }}</span>

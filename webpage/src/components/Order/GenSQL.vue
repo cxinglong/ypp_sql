@@ -61,7 +61,9 @@
         <Card>
           <p slot="title">
             <Icon type="md-remove"></Icon>
-            友情提示：请注意语句的规范性，避免审核无法通过，另外大表DDL操作将在业务低峰时执行！
+            友情提示：请注意语句的规范性，避免审核无法通过，另外生产的大表DDL操作将在业务低峰时执行！<br />
+            非主键操作请指定algorithm=inplace,lock=none 完整DDL示例如下： <br />
+            ALTER TABLE t_app <b>algorithm=inplace,lock=none,</b> ADD COLUMN test varchar(32) NOT NULL DEFAULT '' COMMENT 'test';
           </p>
           <div class="edittable-table-height-con">
             <Tabs :value="tabs">
