@@ -61,7 +61,7 @@
         <Card>
           <p slot="title">
             <Icon type="md-remove"></Icon>
-            表结构详情
+            友情提示：请注意语句的规范性，否则报错哦！
           </p>
           <div class="edittable-table-height-con">
             <Tabs :value="tabs">
