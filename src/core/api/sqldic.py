@@ -41,8 +41,7 @@ class adminpremisson(baseview.SuperUserpermissions):
                 user=_connection.username,
                 password=_connection.password,
                 db=basename,
-                port=_connection.port,
-                connect_timeout=3600
+                port=_connection.port
         ) as f:
             res = f.baseItems(sql='show tables')
             for i in res:
