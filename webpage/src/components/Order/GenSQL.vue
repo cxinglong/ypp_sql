@@ -61,7 +61,7 @@
         <Card>
           <p slot="title">
             <Icon type="md-remove"></Icon>
-            友情提示：请注意语句的规范性，否则无法通过审核程序判定哦！
+            友情提示：请注意语句的规范性，避免审核无法通过，另外大表DDL操作将在业务低峰时执行！
           </p>
           <div class="edittable-table-height-con">
             <Tabs :value="tabs">
