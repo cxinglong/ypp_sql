@@ -95,7 +95,7 @@
         <Card>
           <p slot="title">
             <Icon type="ios-crop"></Icon>
-            填写sql语句
+            请注意SQL语句的规范性，避免审核程序判定为错误！
           </p>
           <editor v-model="formItem.textarea" @init="editorInit" @setCompletions="setCompletions"></editor>
           <br>

@@ -63,7 +63,7 @@
         <Card>
           <p slot="title">
             <Icon type="md-remove"></Icon>
-            友情提示：普通索引名字前缀为"ix_"，唯一索引前缀"uk_"，否则报错哦！
+            友情提示：普通索引名字前缀为"idx_"，唯一索引前缀"uniq_"，否则无法通过审核程序判定哦！
           </p>
           <div class="edittable-table-height-con">
             <Tabs :value="tabs">
