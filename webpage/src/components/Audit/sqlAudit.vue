@@ -72,8 +72,10 @@
     <Modal v-model="modal2" width="1000" :show-ok="false">
       <p slot="header" style="color:#f60;font-size: 16px">
         <Icon type="information-circled"></Icon>
-        <span>SQL工单详细信息</span>
+        SQL工单详细信息
       </p>
+      <p>提示：若是DDL操作，大于512MB的表会自动走pt-online-ddl(已优化从库延时)<br />
+      小于512MB则走online-ddl(非重建表DDL需指定algorithm=inplace,lock=none)</p>
       <Form label-position="right">
         <FormItem label="环境:">
           <span>{{ formitem.computer_room }}</span>
