@@ -32,13 +32,6 @@
                   </Option>
                 </Select>
               </Form-item>
-              <Form-item label="数据库地址:" prop="connection_ip">
-                <Select v-model="formItem.connection_ip" placeholder="请选择" @on-change="DataBaseName">
-                  <Option v-for="i in tableform.sqlname" :value="i.connection_ip" :key="i.connection_ip" filterable>
-                    {{ i.connection_ip }}
-                  </Option>
-                </Select>
-              </Form-item>
               <Form-item label="数据库库名:" prop="basename">
                 <Select v-model="formItem.basename" placeholder="请选择" @on-change="GetTableName" filterable>
                   <Option v-for="item in tableform.basename" :value="item" :key="item">{{ item }}</Option>
