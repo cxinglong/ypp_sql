@@ -81,9 +81,6 @@
         <FormItem label="业务信息:">
           <span>{{ formitem.connection_name }}</span>
         </FormItem>
-        <FormItem label="RDS IP:">
-          <span>{{ formitem.ip }}</span>
-        </FormItem>
         <FormItem label="数据库库名:">
           <span>{{ formitem.basename }}</span>
         </FormItem>
@@ -531,7 +528,6 @@
         this.confirm = true
       },
       put_button () {
-        this.confirm = false
         this.tmp[this.togoing].status = 3
         axios.put(`${util.url}/audit_sql`, {
           'type': 1,
@@ -542,6 +538,7 @@
           .then(res => {
             util.notice(res.data)
             this.$refs.page.currentPage = 1
+            this.confirm = false
           })
           .catch(error => {
             util.err_notice(error)
