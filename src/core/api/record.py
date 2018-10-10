@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from core.models import SqlOrder, SqlRecord
 from libs.serializers import Record
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 class record_order(baseview.SuperUserpermissions):

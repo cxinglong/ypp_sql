@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from rest_framework.response import Response
 from libs import baseview, call_inception, con_database
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 class osc_step(baseview.SuperUserpermissions):

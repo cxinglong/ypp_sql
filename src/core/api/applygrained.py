@@ -8,7 +8,7 @@ from django.db import transaction
 from rest_framework.response import Response
 from core.models import Account, applygrained, globalpermissions
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 class audit_grained(baseview.SuperUserpermissions):

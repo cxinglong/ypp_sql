@@ -16,7 +16,7 @@ from libs.serializers import (
 )
 from core.task import set_auth_group
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 class dashboard(baseview.BaseView):

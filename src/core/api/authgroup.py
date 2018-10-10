@@ -8,7 +8,7 @@ from libs import baseview
 from rest_framework.response import Response
 from core.models import Account, grained
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 class auth_group(baseview.BaseView):

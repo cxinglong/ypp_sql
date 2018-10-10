@@ -15,7 +15,7 @@ from libs.serializers import (
     UserINFO
 )
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 class addressing(baseview.BaseView):

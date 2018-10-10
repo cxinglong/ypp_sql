@@ -86,8 +86,8 @@ class ToWord:
     def createDoc(self):
         self.document = Document()
         self.document.add_heading('数据库文档', 0)
-        self.p = self.document.add_paragraph('Yearning')
-        self.p.add_run('Yearning').bold = True
+        self.p = self.document.add_paragraph('SQL')
+        self.p.add_run('SQL').bold = True
         self.p = self.document.add_paragraph('导出日期: %s' % datetime.now())
         self.document.add_picture('libs/logo.png', width=Inches(8))
 

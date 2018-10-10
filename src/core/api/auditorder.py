@@ -17,7 +17,7 @@ from core.task import order_push_message, rejected_push_messages
 
 conf = util.conf_path()
 addr_ip = conf.ipaddress
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 class audit(baseview.SuperUserpermissions):

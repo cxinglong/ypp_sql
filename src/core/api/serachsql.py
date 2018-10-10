@@ -12,7 +12,7 @@ from libs import baseview, send_email, util
 from libs import con_database
 from core.models import DatabaseList, Account, querypermissions, query_order, globalpermissions
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 def exclued_db_list():

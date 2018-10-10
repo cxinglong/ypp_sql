@@ -17,7 +17,7 @@ from core.models import (
     grained
 )
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 class management_db(baseview.SuperUserpermissions):

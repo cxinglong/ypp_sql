@@ -4,7 +4,7 @@ from core.models import SqlOrder
 from django.http import HttpResponse
 from rest_framework.response import Response
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 class order(baseview.BaseView):

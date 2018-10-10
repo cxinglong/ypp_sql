@@ -10,7 +10,7 @@ from core.models import (
     SqlOrder
 )
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 conf = util.conf_path()
 addr_ip = conf.ipaddress

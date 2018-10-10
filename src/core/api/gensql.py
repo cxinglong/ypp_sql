@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from rest_framework.response import Response
 from libs import gen_ddl, baseview
 
-CUSTOM_ERROR = logging.getLogger('Yearning.core.views')
+CUSTOM_ERROR = logging.getLogger('SQL.core.views')
 
 
 class gen_sql(baseview.BaseView):
