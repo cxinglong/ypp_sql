@@ -79,6 +79,20 @@
                             :disabled="this.validate_gen">提交到DDL语句
                     </Button>
                   </FormItem>
+                  <FormItem>
+                    <div>
+                      <p>
+                        注意：为提高DDL执行效率、尽可能降低对业务的影响需添加<font color="red"> <b>algorithm=inplace,lock=none</b></font>参数.<br>
+                        示例添加列：
+                        ALTER TABLE t_order_test <font color="red"><b>algorithm=inplace,lock=none,</b></font> ADD COLUMN age int(2) NOT NULL DEFAULT 0 COMMENT '用户年龄'; 
+                        <br />
+                        示例添加索引：ALTER TABLE t_order_test <font color="red"> <b>algorithm=inplace,lock=none,</b></font>ADD INDEX idx_update_time(update_time);<br>
+                        我们数据库都是基于alyiun RDS，具体哪些类型的DDL语句支持<font color="red"> <b>algorithm=inplace,lock=none</b></font>，请参考
+                        <a href="https://help.aliyun.com/knowledge_detail/41733.html?spm=5176.11065259.1996646101.searchclickresult.41e027b45AVwjD
+" target="_blank">阿里云RDS DDL说明</a>
+                      </p>
+                    </div>
+                  </FormItem>
                 </Form>
               </TabPane>
               <TabPane label="生成添加字段" name="order3" icon="md-add">
@@ -147,7 +161,7 @@
             </FormItem>
             <FormItem label="是否备份">
               <RadioGroup v-model="formItem.backup">
-                <Radio label="1">是</Radio>
+                <!-- <Radio label="1">是</Radio> -->
                 <Radio label="0">否</Radio>
               </RadioGroup>
             </FormItem>

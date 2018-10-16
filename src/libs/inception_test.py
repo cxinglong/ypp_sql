@@ -11,7 +11,7 @@ operation = '--enable-execute'
 # 发布目标服务器列表，目标服务器
 connstr_target = {'host': 'rm-bp1q926uimur046k5.mysql.rds.aliyuncs.com', 'port': 3306, 'user': 'chenwu_rw', 'password': 'chenwu!@#1', 'db': 'inception01', 'charset': 'utf8'}
 # inception server的配置
-connstr_inception = {'host': '127.0.0.1', 'port': 6669, 'user': 'inception', 'password': '', 'db': '',  'charset': 'utf8mb4'}
+connstr_inception = {'host': '127.0.0.1', 'port': 3306, 'user': 'inception', 'password': '', 'db': '',  'charset': 'utf8mb4'}
 
 
 

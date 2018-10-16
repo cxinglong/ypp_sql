@@ -21,14 +21,19 @@
                     <Option v-for="i in datalist.computer_roomlist" :key="i" :value="i">{{i}}</Option>
                   </Select>
                 </FormItem>
-
+                <!--
                 <FormItem label="业务信息:" prop="connection_name">
                   <Select v-model="formItem.connection_name" @on-change="DataBaseName" filterable>
-                    <Option v-for="i in datalist.connection_name_list" :value="i.connection_name"
-                            :key="i.connection_name">{{ i.connection_name }}
+                    <Option v-for="i in datalist.connection_name_list" :value="i.connection_name":key="i.connection_name">{{ i.connection_name }}
                     </Option>
                   </Select>
                 </FormItem>
+                 -->
+                <Form-item label="业务信息:" prop="connection_name">
+                <Select v-model="formItem.connection_name" @on-change="DataBaseName" filterable>
+                  <Option v-for="i in datalist.connection_name_list" :value="i.connection_name" :key="i.connection_name">{{ i.connection_name }}</Option>
+                </Select>
+              </Form-item>
 
                 <FormItem label="库名:" prop="basename">
                   <Select v-model="formItem.basename" filterable>
@@ -49,7 +54,7 @@
                 <FormItem label="是否备份">
                   <RadioGroup v-model="formItem.backup">
                     <Radio label="1">是</Radio>
-                    <Radio label="0">否</Radio>
+                    <!-- <Radio label="0">否</Radio> -->
                   </RadioGroup>
                 </FormItem>
 
@@ -126,7 +131,7 @@
           connection_name: '',
           basename: '',
           text: '',
-          backup: '0',
+          backup: '1',
           assigned: '',
           delay: 0
         },

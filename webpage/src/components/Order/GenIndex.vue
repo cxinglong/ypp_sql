@@ -61,10 +61,10 @@
       </Col>
       <Col span="18" class="padding-left-10">
         <Card>
-          <p slot="title">
+          <p>
             <Icon type="md-remove"></Icon>
-            友情提示：普通索引名字前缀为"idx_"，唯一索引前缀"uniq_"，否则无法通过审核程序判定哦！
-          </p>
+            友情提示：普通索引名字前缀为"idx_"，唯一索引前缀"uniq_"!
+          </p>  
           <div class="edittable-table-height-con">
             <Tabs :value="tabs">
               <TabPane label="表字段详情" name="order1" icon="md-apps">

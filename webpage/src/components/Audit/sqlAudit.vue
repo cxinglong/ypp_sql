@@ -170,7 +170,7 @@
     </Modal>
 
 
-    <Modal v-model="confirm" :show-ok="false" >
+    <Modal v-model="confirm" @on-ok="put_button" >
       <p slot="header" style="color:#f60;font-size: 16px">
         <Icon type="information-circled"></Icon>
         <span>您确定执行操作吗？</span>
@@ -185,9 +185,6 @@
         <FormItem label="是否备份:">
           {{ formitem.backup }}
         </FormItem>
-        <div>
-          <Button type="success" @click="put_button()">确认执行</Button>
-        </div>
         <FormItem>
             <Table :columns="sql_columns" :data="sql"></Table>
         </FormItem>
@@ -538,7 +535,6 @@
           .then(res => {
             util.notice(res.data)
             this.$refs.page.currentPage = 1
-            this.confirm = false
           })
           .catch(error => {
             util.err_notice(error)
