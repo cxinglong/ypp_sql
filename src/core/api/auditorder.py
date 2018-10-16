@@ -55,7 +55,7 @@ class audit(baseview.SuperUserpermissions):
                 info = SqlOrder.objects.raw(
                     '''
                     select core_sqlorder.*,core_databaselist.connection_name, \
-                    core_databaselist.computer_room from core_sqlorder \
+                    core_databaselist.computer_room,core_databaselist.ip from core_sqlorder \
                     INNER JOIN core_databaselist on \
                     core_sqlorder.bundle_id = core_databaselist.id where core_sqlorder.assigned = '%s'\
                     ORDER BY core_sqlorder.id desc

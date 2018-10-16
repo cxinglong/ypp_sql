@@ -10,7 +10,7 @@
         <Card>
           <p slot="title">
             <Icon type="ios-redo"></Icon>
-            选择数据库
+            DML(UPDATE/INSERT/DELETE)
           </p>
           <div class="edittable-test-con">
             <div id="showImage" class="margin-bottom-10">
@@ -100,7 +100,7 @@
         <Card>
           <p slot="title">
             <Icon type="ios-crop"></Icon>
-            请注意SQL语句的规范性，避免审核程序判定为错误！
+            请注意SQL语句的规范性，避免审核程序判定为错误！支持多SQL，以分号结尾分割。特殊情况请Email给dba@yupaopao.cn
           </p>
           <editor v-model="formItem.textarea" @init="editorInit" @setCompletions="setCompletions"></editor>
           <br>

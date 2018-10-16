@@ -15,7 +15,7 @@
         <Card>
           <p slot="title">
             <Icon type="ios-redo"></Icon>
-            选择数据库
+            DDL(CREATE/ALTER)
           </p>
           <div class="edittable-test-con">
             <Form :model="formItem" :label-width="100" ref="formItem" :rules="ruleValidate">
@@ -61,11 +61,11 @@
         <Card>
           <p slot="title">
             <Icon type="md-remove"></Icon>
-            友情提示：请注意语句的规范性，避免审核无法通过，另外生产的大表DDL操作将在业务低峰时执行！<br />
+            友情提示：请注意语句的规范性，避免审核无法通过！特殊情况请Email给dba@yupaopao.cn<br />
           </p>
           <div class="edittable-table-height-con">
             <Tabs :value="tabs">
-              <TabPane label="手动模式" name="order1" icon="md-code">
+              <TabPane label="支持多SQL，以分号结尾分割" name="order1" icon="md-code">
                 <Form>
                   <FormItem>
                     <editor v-model="formDynamic" @init="editorInit" @setCompletions="setCompletions"></editor>
@@ -95,6 +95,7 @@
                   </FormItem>
                 </Form>
               </TabPane>
+              <!--
               <TabPane label="生成添加字段" name="order3" icon="md-add">
                 <Table stripe :columns="addcolums" :data="add_row" height="385" border></Table>
                 <div style="margin-top: 5%">
@@ -117,6 +118,7 @@
                 <edittable refs="table2" v-model="TableDataNew" :columns-list="tabcolumns" @index="remove"
                            @on-change="cell_change"></edittable>
               </TabPane>
+            -->
             </Tabs>
           </div>
         </Card>

@@ -81,6 +81,9 @@
         <FormItem label="业务信息:">
           <span>{{ formitem.connection_name }}</span>
         </FormItem>
+        <FormItem label="数据库地址:">
+          <span>{{ formitem.ip }}</span>
+        </FormItem>
         <FormItem label="数据库库名:">
           <span>{{ formitem.basename }}</span>
         </FormItem>
@@ -176,11 +179,20 @@
         <span>您确定执行操作吗？</span>
       </p>
       <Form label-position="right">
-        <FormItem label="工单说明:">
-          <p>{{ formitem.text }}</p>
+        <FormItem label="环境:">
+          <span>{{ formitem.computer_room }}</span>
         </FormItem>
-        <FormItem label="数据库:">
-          <p>{{ formitem.basename }}</p>
+        <FormItem label="业务信息:">
+          <span>{{ formitem.connection_name }}</span>
+        </FormItem>
+        <FormItem label="数据库地址:">
+          <span>{{ formitem.ip }}</span>
+        </FormItem>
+        <FormItem label="数据库库名:">
+          <span>{{ formitem.basename }}</span>
+        </FormItem>
+        <FormItem label="工单说明:">
+          {{ formitem.text }}
         </FormItem>
         <FormItem label="是否备份:">
           {{ formitem.backup }}
@@ -197,12 +209,24 @@
         <span>您确定终止操作吗？</span>
       </p>
       <Form label-position="right">
-        <FormItem label="数据库:">
-          <p>{{ formitem.basename }}</p>
+        <FormItem label="环境:">
+          <span>{{ formitem.computer_room }}</span>
         </FormItem>
-        <div>
-          <Button type="success" @click="stop_osc()">确认终止</Button>
-        </div>
+        <FormItem label="业务信息:">
+          <span>{{ formitem.connection_name }}</span>
+        </FormItem>
+        <FormItem label="数据库地址:">
+          <span>{{ formitem.ip }}</span>
+        </FormItem>
+        <FormItem label="数据库库名:">
+          <span>{{ formitem.basename }}</span>
+        </FormItem>
+        <FormItem label="工单说明:">
+          {{ formitem.text }}
+        </FormItem>
+        <FormItem label="是否备份:">
+          {{ formitem.backup }}
+        </FormItem>
         <FormItem>
             <Table :columns="sql_columns" :data="sql"></Table>
         </FormItem>
