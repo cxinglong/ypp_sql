@@ -29,7 +29,7 @@ class Inception(object):
                                    passwd=inception['password'],
                                    port=int(inception['port']),
                                    db='',
-                                   charset="utf8")
+                                   charset="utf8mb4")
         return self
 
     def GenerateStatements(self, Sql: str = '', Type: str = '', backup=None):
@@ -39,7 +39,7 @@ class Inception(object):
             Sql = Sql.rstrip('；')
         if backup is not None and backup != 0:
             InceptionSQL = '''
-             /*--user=%s;--password=%s;--host=%s;--port=%s;%s;%s;*/ \
+             /*--user=%s;--password=%s;--host=%s;--port=%s;%s;--enable-ignore-warnings;%s;*/ \
              inception_magic_start;\
              use `%s`;\
              %s; \
@@ -55,7 +55,7 @@ class Inception(object):
             return InceptionSQL
         else:
             InceptionSQL = '''
-                        /*--user=%s;--password=%s;--host=%s;--port=%s;%s;*/ \
+                        /*--user=%s;--password=%s;--host=%s;--port=%s;%s;--enable-ignore-warnings;*/ \
                         inception_magic_start;\
                         use `%s`;\
                         %s; \

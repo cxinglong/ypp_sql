@@ -72,7 +72,10 @@
                 text = '已执行'
               } else if (row.status === 4) {
                 color = 'error'
-                text = '执行失败'
+                text = '执行或备份失败'
+              } else if (row.status === 5) {
+                color = 'warning'
+                text = '执行成功有警告'
               } else {
                 color = 'warning'
                 text = '执行中'

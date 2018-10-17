@@ -124,7 +124,10 @@ class order_push_message(threading.Thread):
             ) as f:
                 res = f.Execute(sql=self.order.sql, backup=self.order.backup)
                 for i in res:
-                    if i['errlevel'] != 0:
+                    #if i['errlevel'] != 0:
+                    if i['errlevel'] == 1:
+                        SqlOrder.objects.filter(work_id=self.order.work_id).update(status=5)
+                    if i['errlevel'] == 2:
                         SqlOrder.objects.filter(work_id=self.order.work_id).update(status=4)
                     SqlRecord.objects.get_or_create(
                         state=i['stagestatus'],
