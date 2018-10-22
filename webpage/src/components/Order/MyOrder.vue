@@ -13,7 +13,6 @@
         <Row>
           <Col span="24">
             <Table border :columns="columns" :data="table_data" stripe size="small"></Table>
-          </Col>
         </Row>
         <br>
         <Page :total="page_number" show-elevator @on-change="currentpage" :page-size="20"></Page>
@@ -63,7 +62,7 @@
               let text = ''
               if (row.status === 2) {
                 color = 'primary'
-                text = '待审核'
+                text = '待Leader审核'
               } else if (row.status === 0) {
                 color = 'error'
                 text = '驳回'
@@ -76,6 +75,9 @@
               } else if (row.status === 5) {
                 color = 'warning'
                 text = '执行成功有警告'
+              } else if (row.status === 6) {
+                color = 'primary'
+                text = '待DBA执行'
               } else {
                 color = 'warning'
                 text = '执行中'
@@ -98,7 +100,7 @@
                 value: 0
               },
               {
-                label: '待审核',
+                label: '待Leader审核',
                 value: 2
               },
               {
@@ -108,6 +110,10 @@
               {
                 label: '执行失败',
                 value: 4
+              },
+              {
+                label: '待DBA执行',
+                value: 6
               }
             ],
             //            filterMultiple: false 禁止多选,
@@ -120,6 +126,10 @@
                 return row.status === 0
               } else if (value === 3) {
                 return row.status === 3
+              } else if (value === 6) {
+                return row.status === 6
+              } else if (value === 5) {
+                return row.status === 5
               } else {
                 return row.status === 4
               }

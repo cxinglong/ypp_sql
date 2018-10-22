@@ -119,7 +119,7 @@ class audit(baseview.SuperUserpermissions):
                 else:
                     try:
                         idempotent = SqlOrder.objects.filter(id=order_id).first()
-                        if idempotent.status != 2:
+                        if idempotent.status != 6:
                             return Response('非法传参，触发幂等操作')
                         else:
                             SqlOrder.objects.filter(id=order_id).update(status=3)
@@ -139,6 +139,7 @@ class audit(baseview.SuperUserpermissions):
                 else:
                     mail = Account.objects.filter(username=perform).first()
                     SqlOrder.objects.filter(work_id=work_id).update(assigned=perform)
+                    SqlOrder.objects.filter(work_id=work_id).update(status=6)
                     threading.Thread(target=push_message, args=(
                         {'to_user': username, 'workid': work_id, 'addr': addr_ip}, 9, request.user, mail.email,
                         work_id,

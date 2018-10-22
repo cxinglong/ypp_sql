@@ -64,7 +64,6 @@
                    @on-selection-change="delrecordList"></Table>
             <br>
             <Page :total="pagenumber" show-elevator @on-change="mou_data" :page-size="20" ref="page"></Page>
-          </Col>
         </Row>
       </Card>
     </Row>
@@ -132,7 +131,7 @@
         <span>SQL工单驳回理由说明</span>
       </p>
       <Input v-model="reject.textarea" type="textarea" :autosize="{minRows: 15,maxRows: 15}"
-             placeholder="请填写驳回说明"></Input>
+             placeholder="请填写驳回说明">
     </Modal>
 
     <Modal
@@ -294,23 +293,28 @@
           {
             title: '状态',
             key: 'status',
-            width: 150,
             render: (h, params) => {
               const row = params.row
               let color = ''
               let text = ''
               if (row.status === 2) {
                 color = 'primary'
-                text = '待审核'
+                text = '待Leader审核'
               } else if (row.status === 0) {
                 color = 'error'
                 text = '驳回'
               } else if (row.status === 1) {
                 color = 'success'
                 text = '已执行'
+              } else if (row.status === 6) {
+                color = 'primary'
+                text = '待DBA执行'
               } else if (row.status === 4) {
                 color = 'error'
                 text = '执行失败'
+              } else if (row.status === 5) {
+                color = 'warning'
+                text = '执行成功有警告'
               } else {
                 color = 'warning'
                 text = '执行中'
@@ -333,7 +337,7 @@
                 value: 0
               },
               {
-                label: '待审核',
+                label: '待Leader审核',
                 value: 2
               },
               {
@@ -343,6 +347,14 @@
               {
                 label: '执行失败',
                 value: 4
+              },
+               {
+                label: '执行成功有警告',
+                value: 5
+              },
+              {
+                label: '待DBA执行',
+                value: 6
               }
             ],
             //            filterMultiple: false 禁止多选,
@@ -355,6 +367,10 @@
                 return row.status === 0
               } else if (value === 3) {
                 return row.status === 3
+              } else if (value === 5) {
+                return row.status === 5
+              } else if (value === 6) {
+                return row.status === 6
               } else {
                 return row.status === 4
               }
@@ -519,7 +535,7 @@
         this.dataId = []
         this.modal2 = true
         this.formitem = this.tmp[index]
-        this.tmp[index].status === 2 ? this.switch_show = true : this.switch_show = false
+        this.tmp[index].status === 6 || this.tmp[index].status === 2 ? this.switch_show = true : this.switch_show = false
         let tmpSql = this.tmp[index].sql.split(';')
         for (let i of tmpSql) {
           this.sql.push({'sql': i})

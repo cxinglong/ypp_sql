@@ -19,7 +19,6 @@
                    @on-selection-change="delrecordList"></Table>
             <br>
             <Page :total="per_pn" show-elevator @on-change="permisson_list" :page-size="20" ref="perpage"></Page>
-          </Col>
         </Row>
       </Card>
     </Row>
@@ -37,7 +36,7 @@
           </FormItem>
           <template v-if="permission.ddl !== '0'">
             <FormItem label="业务信息:">
-              <span v-for="i in permission.ddlcon" style="margin-left: 1%">{{i}}</span>
+              <span v-for="i in permission.ddlcon" style="margin-left: 1%" :key="i">{{i}}</span>
             </FormItem>
           </template>
           <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
@@ -48,13 +47,13 @@
           </FormItem>
           <template v-if="permission.dml === '1'">
             <FormItem label="业务信息:">
-              <span v-for="i in permission.dmlcon" style="margin-left: 1%">{{i}}</span>
+              <span v-for="i in permission.dmlcon" style="margin-left: 1%" :key="i">{{i}}</span>
             </FormItem>
           </template>
           <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
           <br>
           <FormItem label="上级审核人范围:">
-            <span v-for="i in permission.person" style="margin-left: 1%">{{i}}</span>
+            <span v-for="i in permission.person" style="margin-left: 1%" :key="i">{{i}}</span>
           </FormItem>
           <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
           <br>
@@ -64,7 +63,7 @@
           </FormItem>
           <template v-if="permission.query === '1'">
             <FormItem label="业务信息:">
-              <span v-for="i in permission.querycon" style="margin-left: 1%">{{i}}</span>
+              <span v-for="i in permission.querycon" style="margin-left: 1%" :key="i">{{i}}</span>
             </FormItem>
           </template>
           <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
@@ -83,7 +82,7 @@
               <p v-else>是</p>
             </FormItem>
             <FormItem label="业务信息:">
-              <span v-for="i in permission.diccon" style="margin-left: 1%">{{i}}</span>
+              <span v-for="i in permission.diccon" style="margin-left: 1%" :key="i">{{i}}</span>
             </FormItem>
           </template>
         </template>

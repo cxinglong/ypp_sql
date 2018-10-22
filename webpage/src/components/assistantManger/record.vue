@@ -8,7 +8,7 @@
       <Card>
         <p slot="title">
           <Icon type="md-send"></Icon>
-          历史工单执行记录
+          审核记录
         </p>
         <Row>
           <Col span="24">
@@ -16,7 +16,6 @@
                    style="background: #5cadff"></Table>
             <br>
             <Page :total="this.pagenumber" show-elevator @on-change="splicpage" :page-size="10" ref="page"></Page>
-          </Col>
         </Row>
       </Card>
     </Row>
@@ -65,6 +64,88 @@
             key: 'basename'
           },
           {
+            title: '状态',
+            key: 'status',
+            render: (h, params) => {
+              const row = params.row
+              let color = ''
+              let text = ''
+              if (row.status === 2) {
+                color = 'primary'
+                text = '待Leader审核'
+              } else if (row.status === 0) {
+                color = 'error'
+                text = '驳回'
+              } else if (row.status === 1) {
+                color = 'success'
+                text = '已执行'
+              } else if (row.status === 4) {
+                color = 'error'
+                text = '执行或备份失败'
+              } else if (row.status === 5) {
+                color = 'warning'
+                text = '执行成功有警告'
+              } else if (row.status === 6) {
+                color = 'primary'
+                text = '待DBA执行'
+              } else {
+                color = 'warning'
+                text = '执行中'
+              }
+
+              return h('Tag', {
+                props: {
+                  type: 'dot',
+                  color: color
+                }
+              }, text)
+            },
+            sortable: true,
+            filters: [{
+              label: '已执行',
+              value: 1
+            },
+              {
+                label: '驳回',
+                value: 0
+              },
+              {
+                label: '待Leader审核',
+                value: 2
+              },
+              {
+                label: '执行中',
+                value: 3
+              },
+              {
+                label: '执行失败',
+                value: 4
+              },
+              {
+                label: '待DBA执行',
+                value: 6
+              }
+            ],
+            //            filterMultiple: false 禁止多选,
+            filterMethod (value, row) {
+              if (value === 1) {
+                return row.status === 1
+              } else if (value === 2) {
+                return row.status === 2
+              } else if (value === 0) {
+                return row.status === 0
+              } else if (value === 3) {
+                return row.status === 3
+              } else if (value === 6) {
+                return row.status === 6
+              } else if (value === 5) {
+                return row.status === 5
+              } else {
+                return row.status === 4
+              }
+            }
+          },
+          {
             title: '操作',
             key: 'action',
             align: 'center',
@@ -79,7 +160,7 @@
                     click: () => {
                       this.$router.push({
                         name: 'orderlist',
-                        query: {workid: params.row.work_id, id: params.row.id, status: 1, type: params.row.type}
+                        query: {workid: params.row.work_id, id: params.row.id, status: params.row.status, type: params.row.type}
                       })
                     }
                   }
