@@ -101,7 +101,7 @@ export const appRouter = [
         title: 'DDL',
         'icon': 'md-git-merge',
         component: resolve => {
-          require(['./components/order/genSql.vue'], resolve)
+          require(['./components/Order/genSql.vue'], resolve)
         }
       },
       {
@@ -110,7 +110,7 @@ export const appRouter = [
         title: 'DML',
         'icon': 'md-code',
         component: resolve => {
-          require(['./components/order/sqlSyntax.vue'], resolve)
+          require(['./components/Order/sqlSyntax.vue'], resolve)
         }
       }
       // {
@@ -137,7 +137,7 @@ export const appRouter = [
         title: '数据库',
         'icon': 'ios-book',
         component: resolve => {
-          require(['./components/search/databaseList.vue'], resolve)
+          require(['./components/Search/databaseList.vue'], resolve)
         }
       },
       {
@@ -146,7 +146,7 @@ export const appRouter = [
         title: '表结构',
         'icon': 'ios-book',
         component: resolve => {
-          require(['./components/search/databaseDic.vue'], resolve)
+          require(['./components/Search/databaseDic.vue'], resolve)
         }
       }
     ]
@@ -287,7 +287,7 @@ export const querypage = {
       title: '查询',
       name: 'querypage',
       component: resolve => {
-        require(['./components/search/querySql.vue'], resolve)
+        require(['./components/Search/QuerySQL.vue'], resolve)
       }
     }
   ]
@@ -346,7 +346,7 @@ export const selectro = {
       title: 'SQL查询',
       'icon': 'ios-podium',
       component: resolve => {
-      require(['./components/search/workFlow.vue'], resolve)
+      require(['./components/Search/workFlow.vue'], resolve)
         }
     }
   ]

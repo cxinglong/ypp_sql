@@ -18,13 +18,13 @@
         <Card>
           <p slot="title">
             <Icon type="ios-redo"></Icon>
-            选择数据库--2
+            选择数据库
           </p>
           <div class="edittable-test-con">
             <div id="showImage" class="margin-bottom-10">
               <div class="tree">
                 <Tree :data="data1" @on-select-change="Getbasename" @on-toggle-expand="choseName"
-                      @empty-text="数据加载中"></Tree>
+                      empty-text="数据加载中..."></Tree>
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@
         <Card>
           <p slot="title">
             <Icon type="ios-crop-strong"></Icon>
-            填写sql语句--1
+            填写sql语句
           </p>
           <editor v-model="formItem.textarea" @init="editorInit" @setCompletions="setCompletions"></editor>
           <br>
@@ -219,7 +219,7 @@
           .then(res => util.notice(res.data))
           .catch(err => util.err_notice(err))
         this.$router.push({
-          name: 'serach-sql'
+          name: 'selectro'
         })
       }
     },

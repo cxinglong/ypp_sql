@@ -173,7 +173,7 @@ class query_worklf(baseview.BaseView):
     def put(self, request, args: str = None):
 
         if request.data['mode'] == 'put':
-            instructions = request.data['instructions']
+            #instructions = request.data['instructions']
             connection_name = request.data['connection_name']
             computer_room = request.data['computer_room']
             export = request.data['export']
@@ -198,7 +198,7 @@ class query_worklf(baseview.BaseView):
                     CUSTOM_ERROR.error(f'{e.__class__.__name__}: {e}')
             query_order.objects.create(
                 work_id=work_id,
-                instructions=instructions,
+               # instructions=instructions,
                 username=request.user,
                 date=util.date(),
                 query_per=query_per,

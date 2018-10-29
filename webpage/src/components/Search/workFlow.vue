@@ -50,10 +50,6 @@
                   <Radio label="0">否</Radio>
                 </RadioGroup>
               </FormItem>
-              <FormItem label="查询说明：" prop="opinion">
-                <Input v-model="step.opinion" type="textarea" :autosize="{minRows: 4,maxRows: 8}"
-                       placeholder="请填写查询说明"/>
-              </FormItem>
               <FormItem label="">
                 <Button @click="handleSubmit" style="width:100px;" type="primary">提交</Button>
               </FormItem>
@@ -104,9 +100,6 @@
           }
         ],
         stepRules: {
-          opinion: [
-            {required: true, message: '请填写查询说明', trigger: 'blur'}
-          ],
           computer_room: [{
             required: true,
             message: '环境地址不得为空',
@@ -160,7 +153,6 @@
           if (valid) {
             axios.put(`${util.url}/query_worklf`, {
               'mode': 'put',
-              'instructions': this.step.opinion,
               'connection_name': this.step.connection_name,
               'computer_room': this.step.computer_room,
               'export': this.step.export,
