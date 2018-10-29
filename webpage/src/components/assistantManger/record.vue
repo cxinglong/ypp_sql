@@ -16,6 +16,7 @@
                    style="background: #5cadff"></Table>
             <br>
             <Page :total="this.pagenumber" show-elevator @on-change="splicpage" :page-size="10" ref="page"></Page>
+          </Col>
         </Row>
       </Card>
     </Row>

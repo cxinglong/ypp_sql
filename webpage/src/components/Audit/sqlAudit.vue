@@ -64,6 +64,7 @@
                    @on-selection-change="delrecordList"></Table>
             <br>
             <Page :total="pagenumber" show-elevator @on-change="mou_data" :page-size="20" ref="page"></Page>
+          </Col>
         </Row>
       </Card>
     </Row>
@@ -132,6 +133,7 @@
       </p>
       <Input v-model="reject.textarea" type="textarea" :autosize="{minRows: 15,maxRows: 15}"
              placeholder="请填写驳回说明">
+      </Input>
     </Modal>
 
     <Modal

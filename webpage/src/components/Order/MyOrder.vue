@@ -13,6 +13,7 @@
         <Row>
           <Col span="24">
             <Table border :columns="columns" :data="table_data" stripe size="small"></Table>
+          </Col>
         </Row>
         <br>
         <Page :total="page_number" show-elevator @on-change="currentpage" :page-size="20"></Page>

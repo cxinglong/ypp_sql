@@ -122,7 +122,7 @@
               <p v-for="i in sql">{{i}}</p>
             </FormItem>
             <FormItem label="工单提交说明:" required>
-              <Input v-model="formItem.text" placeholder="请输入工单说明">
+              <Input v-model="formItem.text" placeholder="请输入工单说明"></Input>
             </FormItem>
             <FormItem label="指定审核人:" required>
               <Select v-model="formItem.assigned" filterable transfer>

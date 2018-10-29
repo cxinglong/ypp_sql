@@ -19,6 +19,7 @@
                    @on-selection-change="delrecordList"></Table>
             <br>
             <Page :total="per_pn" show-elevator @on-change="permisson_list" :page-size="20" ref="perpage"></Page>
+          </Col>
         </Row>
       </Card>
     </Row>

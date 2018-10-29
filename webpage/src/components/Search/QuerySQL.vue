@@ -18,7 +18,7 @@
         <Card>
           <p slot="title">
             <Icon type="ios-redo"></Icon>
-            选择数据库
+            选择数据库--2
           </p>
           <div class="edittable-test-con">
             <div id="showImage" class="margin-bottom-10">
@@ -34,7 +34,7 @@
         <Card>
           <p slot="title">
             <Icon type="ios-crop-strong"></Icon>
-            填写sql语句
+            填写sql语句--1
           </p>
           <editor v-model="formItem.textarea" @init="editorInit" @setCompletions="setCompletions"></editor>
           <br>

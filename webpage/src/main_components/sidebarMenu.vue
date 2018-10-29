@@ -24,9 +24,9 @@
       <Icon type="md-person" :size="iconSize"></Icon>
       <span class="layout-text">我的工单</span>
     </MenuItem>
-    <MenuItem name="databaselist">
+    <MenuItem name="selectro">
       <Icon type="md-cube" :size="iconSize"></Icon>
-      <span class="layout-text">库字典</span>
+      <span class="layout-text">select查询</span>
     </MenuItem>
     <template v-for="item in menuList">
       <Submenu v-if="item.children.length>=1 && item.name !== 'main'" :name="item.name" :key="item.path">
@@ -68,7 +68,8 @@
           'dmledit': '',
           'indexedit': '',
           'view-dml': '',
-          'serach-sql': '1',
+          'selectro': '1',
+          'databaselist': '1',
           'management-user': '',
           'management-database': '',
           'audit-audit': '1',

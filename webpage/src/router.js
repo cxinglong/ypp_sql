@@ -128,9 +128,18 @@ export const appRouter = [
     path: '/view',
     icon: 'md-search',
     name: 'view',
-    title: '查询',
+    title: '数据字典',
     component: Index,
     children: [
+      {
+        path: 'databaselist',
+        name: 'databaselist',
+        title: '数据库',
+        'icon': 'ios-book',
+        component: resolve => {
+          require(['./components/search/databaseList.vue'], resolve)
+        }
+      },
       {
         path: 'view-dml',
         name: 'view-dml',
@@ -138,15 +147,6 @@ export const appRouter = [
         'icon': 'ios-book',
         component: resolve => {
           require(['./components/search/databaseDic.vue'], resolve)
-        }
-      },
-      {
-        path: 'serach-sql',
-        name: 'serach-sql',
-        title: 'SQL查询',
-        'icon': 'ios-podium',
-        component: resolve => {
-          require(['./components/search/workFlow.vue'], resolve)
         }
       }
     ]
@@ -178,37 +178,9 @@ export const appRouter = [
         }
       },
       {
-        path: 'query-audit',
-        name: 'query-audit',
-        title: '查询',
-        'icon': 'logo-rss',
-        component: resolve => {
-          require(['./components/audit/queryAudit.vue'], resolve)
-        }
-      }
-    ]
-  },
-  {
-    path: '/record',
-    icon: 'md-pie',
-    name: 'record',
-    title: '记录',
-    component: Index,
-    access: 0,
-    children: [
-      {
-        path: 'query-review',
-        name: 'query-review',
-        title: '查询审计',
-        'icon': 'md-pulse',
-        component: resolve => {
-          require(['./components/assistantManger/queryRecord.vue'], resolve)
-        }
-      },
-      {
         path: 'audit-record',
         name: 'audit-record',
-        title: '工单记录',
+        title: '审批记录',
         'icon': 'md-list',
         component: resolve => {
           require(['./components/assistantManger/record.vue'], resolve)
@@ -360,7 +332,7 @@ export const myorder = {
   ]
 }
 
-export const databaselist = {
+export const selectro = {
   path: '/',
   icon: 'home',
   name: 'main',
@@ -369,13 +341,13 @@ export const databaselist = {
   redirect: '/home',
   children: [
      {
-      path: 'databaselist',
-      name: 'databaselist',
-      title: '数据库列表',
-      'icon': 'database',
+      path: 'selectro',
+      name: 'selectro',
+      title: 'SQL查询',
+      'icon': 'ios-podium',
       component: resolve => {
-        require(['./components/search/databaseList.vue'], resolve)
-      }
+      require(['./components/search/workFlow.vue'], resolve)
+        }
     }
   ]
 }
@@ -390,7 +362,7 @@ export const MainRoute = [
   querypage,
   version,
   myorder,
-  databaselist,
+  selectro,
   page404,
   page401,
   page500

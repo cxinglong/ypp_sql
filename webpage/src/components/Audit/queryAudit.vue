@@ -19,7 +19,7 @@
                    @on-selection-change="delrecordList"></Table>
             <br>
             <Page :total="per_pn" show-elevator @on-change="permisson_list" :page-size="20" ref="perpage"></Page>
-
+          </Col>
         </Row>
       </Card>
     </Row>
@@ -46,7 +46,7 @@
         <hr style="height:1px;border:none;border-top:1px dashed #dddee1;"/>
         <br>
         <FormItem label="查询说明:">
-          <Input v-model="query.instructions" type="textarea" :autosize="{minRows: 5,maxRows: 8}" readonly>
+          <Input v-model="query.instructions" type="textarea" :autosize="{minRows: 5,maxRows: 8}" readonly></Input>
         </FormItem>
       </Form>
       <div slot="footer">
