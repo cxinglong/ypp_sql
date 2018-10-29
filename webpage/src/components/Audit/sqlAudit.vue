@@ -262,8 +262,7 @@
             title: '工单编号:',
             key: 'work_id',
             sortable: true,
-            sortType: 'desc',
-            width: 200
+            sortType: 'desc'
           },
           {
             title: '工单说明:',
@@ -272,7 +271,7 @@
           {
             title: '是否备份',
             key: 'backup',
-            width: 100
+            width: 90
           },
           {
             title: '提交时间:',
@@ -280,13 +279,19 @@
             sortable: true
           },
           {
-            title: '提交账号',
+            title: '执行时间:',
+            key: 'exe_date'
+          },
+          {
+            title: '提交人',
             key: 'username',
+            width: 120,
             sortable: true
           },
           {
-            title: '提交人姓名',
-            key: 'real_name',
+            title: '审批人',
+            key: 'auditor',
+            width: 120,
             sortable: true
           },
 

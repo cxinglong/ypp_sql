@@ -41,7 +41,8 @@
           },
           {
             title: '是否备份',
-            key: 'backup'
+            key: 'backup',
+            width: 90
           },
           {
             title: '提交时间:',
@@ -51,7 +52,22 @@
           {
             title: '提交人',
             key: 'username',
+            width: 120,
             sortable: true
+          },
+          {
+            title: '审核人',
+            key: 'auditor',
+            width: 120
+          },
+          {
+            title: 'DBA',
+            key: 'executor',
+            width: 120
+          },
+          {
+            title: '执行时间',
+            key: 'exe_date'
           },
           {
             title: '状态',
@@ -110,6 +126,10 @@
               {
                 label: '执行失败',
                 value: 4
+              },
+              {
+                label: '执行成功有警告',
+                value: 5
               },
               {
                 label: '待DBA执行',

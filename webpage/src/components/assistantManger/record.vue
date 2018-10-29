@@ -39,17 +39,23 @@
             key: 'text'
           },
           {
-            title: '执行时间',
+            title: '申请时间',
             key: 'date',
             sortType: 'desc'
           },
           {
             title: '申请人',
-            key: 'username'
+            key: 'username',
+            width: 120
           },
           {
             title: 'DBA',
-            key: 'assigned'
+            key: 'executor',
+            width: 120
+          },
+          {
+            title: '执行时间',
+            key: 'exe_date'
           },
           {
             title: '执行区域',

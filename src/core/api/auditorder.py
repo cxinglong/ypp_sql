@@ -124,6 +124,7 @@ class audit(baseview.SuperUserpermissions):
                         else:
                             SqlOrder.objects.filter(id=order_id).update(status=3)
                             order_push_message(addr_ip, order_id, from_user, to_user).start()
+                            SqlOrder.objects.filter(id=order_id).update(exe_date=util.date())
                             return Response('工单执行成功!请通过记录页面查看具体执行结果')
                     except Exception as e:
                         CUSTOM_ERROR.error(f'{e.__class__.__name__}: {e}')
@@ -140,6 +141,7 @@ class audit(baseview.SuperUserpermissions):
                     mail = Account.objects.filter(username=perform).first()
                     SqlOrder.objects.filter(work_id=work_id).update(assigned=perform)
                     SqlOrder.objects.filter(work_id=work_id).update(status=6)
+                    SqlOrder.objects.filter(work_id=work_id).update(executor=perform)
                     threading.Thread(target=push_message, args=(
                         {'to_user': username, 'workid': work_id, 'addr': addr_ip}, 9, request.user, mail.email,
                         work_id,

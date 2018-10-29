@@ -64,12 +64,14 @@ class SqlOrder(models.Model):
     type = models.SmallIntegerField(blank=True)  # 工单类型 0 DDL 1 DML
     backup = models.SmallIntegerField(blank=True)  # 工单是否备份 0 not backup 1 backup
     bundle_id = models.IntegerField(db_index=True, null=True)  # Matching with Database_list id Field
-    date = models.CharField(max_length=100, blank=True)  # 提交日期
+    date = models.CharField(max_length=100, blank=True)  # 提交时间
+    exe_date = models.CharField(max_length=100, blank=True)  # 执行日期
     basename = models.CharField(max_length=50, blank=True)  # 数据库名
     sql = models.TextField(blank=True)  # sql语句
     text = models.TextField(blank=True)  # 工单备注
     assigned = models.CharField(max_length=50, blank=True)  # 指定审核人或执行人
     auditor = models.CharField(max_length=50, blank=True)  # 审核人
+    executor = models.CharField(max_length=50, blank=True)  # 执行人
     delay = models.IntegerField(null=True, default=0)  # 延迟时间
     rejected = models.TextField(blank=True)  # 驳回说明
     real_name = models.CharField(max_length=100,null=True) #姓名
