@@ -176,8 +176,8 @@ class query_worklf(baseview.BaseView):
             #instructions = request.data['instructions']
             connection_name = request.data['connection_name']
             computer_room = request.data['computer_room']
-            export = request.data['export']
-            audit = request.data['audit']
+            #export = request.data['export']
+            #audit = request.data['audit']
             un_init = util.init_conf()
             query_switch = ast.literal_eval(un_init['other'])
             query_per = 2
@@ -204,8 +204,8 @@ class query_worklf(baseview.BaseView):
                 query_per=query_per,
                 connection_name=connection_name,
                 computer_room=computer_room,
-                export=export,
-                audit=audit,
+                #export=export,
+                #audit=audit,
                 time=util.date()
             )
             if not query_switch['query']:

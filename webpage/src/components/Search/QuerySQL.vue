@@ -14,30 +14,31 @@
 <template>
   <div>
     <Row>
-      <Col span="3">
+      <Col span="5">
         <Card>
           <p slot="title">
             <Icon type="ios-redo"></Icon>
-            选择数据库
+            已授权的数据库
           </p>
           <div class="edittable-test-con">
             <div id="showImage" class="margin-bottom-10">
               <div class="tree">
                 <Tree :data="data1" @on-select-change="Getbasename" @on-toggle-expand="choseName"
-                      empty-text="数据加载中..."></Tree>
+                      empty-text="可访问数据加载中..."></Tree>
               </div>
             </div>
           </div>
         </Card>
       </Col>
-      <Col span="21" class="padding-left-10">
+      <Col span="19" class="padding-left-10">
         <Card>
           <p slot="title">
             <Icon type="ios-crop-strong"></Icon>
-            填写sql语句
+            编写sql语句
           </p>
           <editor v-model="formItem.textarea" @init="editorInit" @setCompletions="setCompletions"></editor>
           <br>
+          <p><font color="red"><b>注意：查询前请先在左侧点击 > 选择数据库</b></font></p>
           <p>当前选择的库: {{put_info.base}}</p>
           <br>
           <Button type="error" icon="md-trash" @click.native="ClearForm()">清除</Button>

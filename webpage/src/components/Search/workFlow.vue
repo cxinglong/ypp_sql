@@ -10,55 +10,36 @@
         <Row>
           <i-col span="8">
             <Alert type="warning" show-icon>
-              注意事项:
+              使用说明:
               <span slot="desc">
-              1.必须填写查询说明
+              1.目前仅开放 隔离只读 环境的select权限，与生产隔离且关键字段已脱敏。
               <br>
-              2.根据查询条件预估所需的查询时间
+              2.所有提交的查询语句均会进行后台审计记录。
               <br>
-              3.所有提交的查询语句均会进行审计记录
+              3.仅支持select语句,不可使用非查询语句。
               <br>
-              4.仅支持select语句,不可使用非查询语句
-              <br>
-              5.已限制最大limit数，如自己输入的limit数大于平台配置的最大limit数则已平台配置的Limit数为准
+              4.已限制最大limit 100，如自己输入的limit数大于平台配置的最大limit数则已平台配置的Limit数为准。
             </span>
             </Alert>
           </i-col>
-          <i-col span="12">
+          <i-col span="6">
             <Form ref="step" :model="step" :rules="stepRules" :label-width="150">
               <FormItem label="环境:" prop="computer_room">
-                <Select v-model="step.computer_room" @on-change="Connection_Name">
+                <Select v-model="step.computer_room"  @on-change="Connection_Name">
                   <Option v-for="i in datalist.computer_roomlist" :key="i" :value="i">{{i}}</Option>
                 </Select>
               </FormItem>
-
-              <FormItem label="业务信息:" prop="connection_name">
+              <Form-item label="业务信息:" prop="connection_name">
                 <Select v-model="step.connection_name" filterable>
-                  <Option v-for="i in datalist.connection_name_list" :value="i.connection_name"
-                          :key="i.connection_name">{{ i.connection_name }}
-                  </Option>
+                  <Option v-for="i in datalist.connection_name_list" :value="i.connection_name" :key="i.connection_name">{{ i.connection_name }}</Option>
                 </Select>
-              </FormItem>
-              <FormItem label="审核人:" prop="person">
-                <Select v-model="step.person" filterable>
-                  <Option v-for="i in personlist" :value="i" :key="i">{{ i }}</Option>
-                </Select>
-              </FormItem>
-              <FormItem label="是否需要导出数据:" prop="export">
-                <RadioGroup v-model="step.export">
-                  <Radio label="1">是</Radio>
-                  <Radio label="0">否</Radio>
-                </RadioGroup>
-              </FormItem>
+              </Form-item>
               <FormItem label="">
-                <Button @click="handleSubmit" style="width:100px;" type="primary">提交</Button>
+                <Button @click="handleSubmit" style="width:100px;" type="primary">进入查询页</Button>
               </FormItem>
             </Form>
           </i-col>
         </Row>
-        <Steps style="margin-left: 10%">
-          <Step v-for="item in stepList1" :title="item.title" :content="item.describe" :key="item.title"></Step>
-        </Steps>
       </Card>
     </Row>
   </div>
@@ -75,15 +56,13 @@
     data () {
       return {
         stepData: {
-          title: '比心数据库自动化平台',
+          title: '比心数据库集中查询平台',
           describe: `欢迎你！ ${sessionStorage.getItem('user')}`
         },
         step: {
           remark: '',
           computer_room: '',
-          connection_name: '',
-          person: '',
-          export: '0'
+          connection_name: ''
         },
         stepList1: [
           {
@@ -114,15 +93,9 @@
             required: true,
             message: '数据库名不得为空',
             trigger: 'change'
-          }],
-          person: [{
-            required: true,
-            message: '审核人不得为空',
-            trigger: 'change'
           }]
         },
         item: {},
-        personlist: [],
         datalist: {
           connection_name_list: [],
           basenamelist: [],
@@ -144,6 +117,8 @@
       ScreenConnection (val) {
         this.datalist.connection_name_list = this.item.filter(item => {
           if (item.computer_room === val) {
+            this.$set(this.step, 'connection_name', item.connection_name)
+            debugger
             return item
           }
         })
@@ -154,9 +129,7 @@
             axios.put(`${util.url}/query_worklf`, {
               'mode': 'put',
               'connection_name': this.step.connection_name,
-              'computer_room': this.step.computer_room,
-              'export': this.step.export,
-              'audit': this.step.person
+              'computer_room': this.step.computer_room
             })
               .then(() => {
                 this.$router.push({
@@ -171,8 +144,9 @@
       axios.put(`${util.url}/workorder/connection`, {'permissions_type': 'query'})
         .then(res => {
           this.item = res.data['connection']
-          this.personlist = res.data['assigend']
           this.datalist.computer_roomlist = res.data['custom']
+          this.$set(this.step, 'computer_room', this.datalist.computer_roomlist[2])
+          this.ScreenConnection(this.datalist.computer_roomlist[2])
         })
         .catch(error => {
           util.err_notice(error)
