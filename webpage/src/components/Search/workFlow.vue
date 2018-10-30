@@ -118,7 +118,6 @@
         this.datalist.connection_name_list = this.item.filter(item => {
           if (item.computer_room === val) {
             this.$set(this.step, 'connection_name', item.connection_name)
-            debugger
             return item
           }
         })
